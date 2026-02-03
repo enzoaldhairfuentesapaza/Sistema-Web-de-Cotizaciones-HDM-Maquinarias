@@ -51,7 +51,53 @@ La aplicación permite:
 
 5. Descargar la cotización en formato PDF
 
----
+📊 Reglas de cálculo
 
-## 📦 Estructura del proyecto
+El precio final depende de:
 
+- Ajustes automáticos por marca
+- Tipo de moneda
+- Tipo de cambio
+- Descuentos manuales
+- Redondeo hacia abajo a favor del cliente
+
+🗺️ Planes futuros (Roadmap)
+
+☁️ Persistencia en la nube
+
+- Guardar historial de cotizaciones
+- Recuperar cotizaciones antiguas
+- Edición posterior de documentos
+
+📋 Historial de cotizaciones
+
+- Listado de cotizaciones generadas
+- Filtros por cliente o fecha
+- Re-descarga de PDFs
+
+👥 Multiusuario
+
+- Cuentas para vendedores
+- Control de acceso
+- Registro de actividad
+
+📱 Mejoras de interfaz
+
+- Diseño responsive
+- Mejor experiencia en tablets y móviles
+
+🧾 Funciones administrativas
+
+- Panel de reportes
+- Estadísticas de ventas
+- Exportación de datos
+
+🔐 Seguridad
+
+- Autenticación de usuarios
+- Respaldo automático de información
+
+
+🎯 Objetivo del proyecto
+
+Optimizar el proceso de cotización en HDM Maquinarias, reduciendo errores manuales, mejorando la velocidad de atención al cliente y facilitando el almacenamiento de información.
