@@ -4,6 +4,11 @@
   font-family: "Segoe UI", Tahoma, sans-serif;
 }
 
+.logo {
+  height: 60px;   /* puedes ajustar tamaño */
+  object-fit: contain;
+}
+
 body {
   margin: 0;
   background: #2b2b2b;
