@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>HDM Maquinarias - Cotización</title>
+  <link rel="stylesheet" href="estilos.css">
+  
+</head>
+
+<body>
+
+<header>
+  <h1>HDM Maquinarias</h1>
+</header>
+
+<div class="container">
+
+<!-- PANEL IZQUIERDO -->
+<div class="left-panel">
+
+<h2>Cotización</h2>
+
+<div class="form-row">
+
+<div class="form-row">
+  <div>
+    <label>Cliente</label>
+    <input id="cliente" oninput="updatePDFPreview()" />
+  </div>
+
+  <div>
+    <label>DNI</label>
+    <input id="dni" oninput="updatePDFPreview()" />
+  </div>
+
+</div>
+<div>
+    <label>Dirección</label>
+    <input id="direccion" oninput="updatePDFPreview()" />
+</div>
+</div>
+
+<hr>
+
+<div class="form-row">
+  <div>
+    <label>Código producto</label>
+    <input id="codigoProducto" />
+  </div>
+
+  <div>
+    <label>Marca</label>
+    <select id="marca" onchange="toggleOtraMarca()">
+      <option value="CAT">CAT</option>
+      <option value="CTP">CTP</option>
+      <option value="Handook">Handook</option>
+      <option value="IPD">IPD</option>
+      <option value="Otro">Otro</option>
+    </select>
+    <input id="otraMarca" placeholder="Especificar marca" style="display:none;" />
+    <div id="brandAdjustmentsBox" style="margin-top:6px; font-size:12px;"></div>
+
+  </div>
+</div>
+
+<div class="form-row">
+  <div>
+    <label>Unidad</label>
+    <input id="unidad" placeholder="UND" />
+  </div>
+  <div>
+    <label>Cantidad</label>
+    <input type="number" id="cantidad" value="1" />
+  </div>
+
+</div>
+
+<div class="form-row">
+
+  <div>
+    <label>Precio original</label>
+    <input type="number" id="precio" />
+    <small>Moneda: <span id="monedaLabel">PEN</span></small>
+  </div>
+  <div>
+    <label>Moneda del producto</label>
+    <select id="monedaProducto" onchange="updateMonedaLabel()">
+      <option value="USD" selected> Dólares ($)</option>
+      <option value="PEN">Soles (S/)</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-row">
+  <div>
+    <label>Descripción</label>
+    <input id="descripcion" />
+  </div>
+
+  <div>
+    <label>Descuentos (%)</label>
+    <input type="number" id="descuentoInput" placeholder="%" />
+    <div class="actions">
+      <button type="button" onclick="addDiscount()">Agregar</button>
+      <button type="button" onclick="removeDiscount()">Borrar</button>
+      <small id="listaDescuentos">Ninguno</small>
+    </div> 
+
+  </div>
+</div>
+<hr>
+<div class="form-actions">
+  <div class="actions">
+    <button class="add" onclick="addProduct()">Agregar Producto</button>
+    <!--<button class="save" onclick="savePDF()">Guardar PDF </button>-->
+    <button class="save" onclick="downloadPDF()">Descargar PDF</button>
+    <button class="delete" onclick="clearProducts()">Limpiar Documento</button>
+  </div>
+</div>
+
+
+
+<hr>
+
+<div class="form-row">
+  <div>
+    <label>Tipo de cambio (SUNAT)</label>
+    <input type="number" id="tc" step="0.01" />
+  </div>
+<!--
+<div class="currency-global">
+    <button class="btn-currency usd" onclick="convertAll('USD')">
+      💲 Todo en USD
+    </button>
+    <button class="btn-currency pen" onclick="convertAll('PEN')">
+      🪙 Todo en Soles
+    </button>
+  </div>
+-->
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Unidad</th>
+      <th>Marca</th>
+      <th>Cant</th>
+      <th>Descripción</th>
+      <th>Precio original</th>
+      <th>Subtotal</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody id="tabla"></tbody>
+</table>
+
+<div class="total">
+  Total en soles: <span id="total">0.00</span>
+</div>
+
+</div>
+
+<!-- PANEL DERECHO -->
+<div class="right-panel">
+  <h3>Vista previa PDF</h3>
+  <iframe id="pdfPreview"></iframe>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
