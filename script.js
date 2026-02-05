@@ -8,6 +8,8 @@ const brandAdjustmentsConfig = {
   CTP: [
     { label: "Margen 35%", value: 35 },
     { label: "Margen 40%", value: 40 },
+    { label: "Margen 50%", value: 50 },
+
   ],
   Handook: [
     { label: "Margen 50%", value: 50 },
@@ -24,26 +26,66 @@ function renderBrandAdjustments() {
   box.innerHTML = "";
 
   const brand = marca.value;
-  const adjustments = brandAdjustmentsConfig[brand];
 
-  if (!adjustments) return;
+  // Valores base de la marca
+  const defaults = brandAdjustmentsConfig[brand] || [];
 
-  adjustments.forEach(a => {
+  // Mezclar defaults + personalizados
+  const allAdjustments = [
+    ...defaults.map(a => a.value),
+    ...brandAdjustmentsTemp
+  ];
+
+  allAdjustments.forEach(value => {
     box.innerHTML += `
       <label class="brand-adjustment">
-        <input type="checkbox" checked data-value="${a.value}">
-        <span>+${a.value}%</span>
+        <input type="checkbox" checked data-value="${value}">
+        <span>+${value}%</span>
       </label>
     `;
   });
+
+  // Input + botones
+  box.innerHTML += `
+    <div class="discount-action">
+      <div class="discount-input-group">
+        <input type="number" id="brandAdjInput" placeholder="%" />
+
+        <div class="discount-mini-buttons">
+          <button type="button" onclick="addBrandAdjustment()">+</button>
+          <button type="button" onclick="removeBrandAdjustment()">−</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function addBrandAdjustment() {
+  const input = document.getElementById("brandAdjInput");
+  const value = Number(input.value);
+
+  if (value > 0) {
+    brandAdjustmentsTemp.push(value);
+    input.value = "";
+    renderBrandAdjustments();
+  }
+}
+
+function removeBrandAdjustment() {
+  brandAdjustmentsTemp.pop();
+  renderBrandAdjustments();
 }
 
 function toggleOtraMarca() {
   otraMarca.style.display = marca.value === "Otro" ? "block" : "none";
+
+  brandAdjustmentsTemp = []; // reset personalizados
   renderBrandAdjustments();
 }
 let products = [];
 let discountsTemp = [];
+let brandAdjustmentsTemp = [];
+
 
 /* =======================
    TIPO DE CAMBIO
@@ -201,7 +243,7 @@ function calcularPrecioFinal(p) {
     precio *= (1 - d / 100);
   });
 
-  return Math.floor(precio * 100) / 100;
+  return Math.ceil(precio * 10) / 10;
 }
 
 
@@ -308,9 +350,8 @@ async function buildPDF(ficha) {
     const subtotal = precioFinal * p.qty;
     total += subtotal;
 
-    const descTexto = p.discounts.length
-      ? `${p.desc} (Desc: ${p.discounts.join("%, ")}%)`
-      : p.desc;
+    const descTexto = p.desc;
+
 
     doc.text(String(index), 9, y);
     doc.text(p.code, 18, y);

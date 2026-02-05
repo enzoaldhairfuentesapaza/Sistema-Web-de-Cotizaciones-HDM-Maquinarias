@@ -98,14 +98,18 @@
     <input id="descripcion" />
   </div>
 
-  <div>
+  <div class = "discount-action">
     <label>Descuentos (%)</label>
-    <input type="number" id="descuentoInput" placeholder="%" />
-    <div class="actions">
-      <button type="button" onclick="addDiscount()">Agregar</button>
-      <button type="button" onclick="removeDiscount()">Borrar</button>
-      <small id="listaDescuentos">Ninguno</small>
-    </div> 
+    <div class="discount-input-group">
+      <input type="number" id="descuentoInput" placeholder="%" />
+
+      <div class="discount-mini-buttons">
+        <button type="button" onclick="addDiscount()">+</button>
+        <button type="button" onclick="removeDiscount()">−</button>
+      </div>
+    </div>
+
+    <small id="listaDescuentos">Ninguno descuento añadido</small>
 
   </div>
 </div>
