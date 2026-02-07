@@ -274,12 +274,28 @@ iframe {
   border-color: #f1c40f;
 }
 
+.brand-input {
+  width: 80px;
+  padding: 4px;
+  margin-right: 5px;
+}
 /* CONTENEDOR VISUAL DE DESCUENTOS */
 
 .discount-input-group {
   position: relative;
   display: flex;
   align-items: center;
+}
+
+/*ELIMINAR spinners*/
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .discount-input-group input {

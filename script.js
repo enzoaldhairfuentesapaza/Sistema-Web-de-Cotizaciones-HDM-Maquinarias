@@ -32,7 +32,7 @@ function renderBrandAdjustments() {
     box.innerHTML = `
       <label class="brand-adjustment">
         <input type="checkbox" checked data-value="18">
-        <span>IGV 18%</span>
+        <span>+18%</span>
       </label>
     `;
     return;
@@ -42,8 +42,8 @@ function renderBrandAdjustments() {
   if (["CTP", "Handook", "IPD"].includes(brand)) {
     box.innerHTML = `
       <div class="discount-input-group">
-        <input type="number" class="brand-input" placeholder="% 1" />
-        <input type="number" class="brand-input" placeholder="% 2" />
+        <input type="number" class="brand-input" placeholder="+ %" />
+        <input type="number" class="brand-input" placeholder="+ %" />
       </div>
     `;
     return;
