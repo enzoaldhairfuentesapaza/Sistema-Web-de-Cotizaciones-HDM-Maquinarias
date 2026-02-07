@@ -27,37 +27,55 @@ function renderBrandAdjustments() {
 
   const brand = marca.value;
 
-  // Valores base de la marca
-  const defaults = brandAdjustmentsConfig[brand] || [];
-
-  // Mezclar defaults + personalizados
-  const allAdjustments = [
-    ...defaults.map(a => a.value),
-    ...brandAdjustmentsTemp
-  ];
-
-  allAdjustments.forEach(value => {
-    box.innerHTML += `
+  // ================= CAT =================
+  if (brand === "CAT") {
+    box.innerHTML = `
       <label class="brand-adjustment">
-        <input type="checkbox" checked data-value="${value}">
-        <span>+${value}%</span>
+        <input type="checkbox" checked data-value="18">
+        <span>IGV 18%</span>
       </label>
     `;
-  });
+    return;
+  }
 
-  // Input + botones
-  box.innerHTML += `
-    <div class="discount-action">
+  // ================= CTP / Handook / IPD =================
+  if (["CTP", "Handook", "IPD"].includes(brand)) {
+    box.innerHTML = `
       <div class="discount-input-group">
-        <input type="number" id="brandAdjInput" placeholder="%" />
+        <input type="number" class="brand-input" placeholder="% 1" />
+        <input type="number" class="brand-input" placeholder="% 2" />
+      </div>
+    `;
+    return;
+  }
 
-        <div class="discount-mini-buttons">
-          <button type="button" onclick="addBrandAdjustment()">+</button>
-          <button type="button" onclick="removeBrandAdjustment()">−</button>
+  // ================= OTRO =================
+  if (brand === "Otro") {
+
+    // checkboxes existentes
+    brandAdjustmentsTemp.forEach(value => {
+      box.innerHTML += `
+        <label class="brand-adjustment">
+          <input type="checkbox" checked data-value="${value}">
+          <span>+${value}%</span>
+        </label>
+      `;
+    });
+
+    // formulario dinámico
+    box.innerHTML += `
+      <div class="discount-action">
+        <div class="discount-input-group">
+          <input type="number" id="brandAdjInput" placeholder="%" />
+
+          <div class="discount-mini-buttons">
+            <button type="button" onclick="addBrandAdjustment()">+</button>
+            <button type="button" onclick="removeBrandAdjustment()">−</button>
+          </div>
         </div>
       </div>
-    </div>
-  `;
+    `;
+  }
 }
 
 function addBrandAdjustment() {
@@ -170,8 +188,20 @@ function updateDiscountLabel() {
    PRODUCTOS
 ======================= */
 function addProduct() {
-  const adjustments = [...document.querySelectorAll(
-  "#brandAdjustmentsBox input:checked")].map(i => Number(i.dataset.value));
+  let adjustments = [];
+
+  if (marca.value === "CAT" || marca.value === "Otro") {
+
+    adjustments = [...document.querySelectorAll(
+      "#brandAdjustmentsBox input:checked"
+    )].map(i => Number(i.dataset.value));
+
+  } else if (["CTP", "Handook", "IPD"].includes(marca.value)) {
+
+    adjustments = [...document.querySelectorAll(".brand-input")]
+      .map(i => Number(i.value))
+      .filter(v => v > 0);
+  }
 
   const brandFinal = marca.value === "Otro" ? otraMarca.value : marca.value;
 
