@@ -243,7 +243,7 @@ function calcularPrecioFinal(p) {
     precio *= (1 - d / 100);
   });
 
-  return Math.ceil(precio * 10) / 10;
+  return Math.round(precio);
 }
 
 
