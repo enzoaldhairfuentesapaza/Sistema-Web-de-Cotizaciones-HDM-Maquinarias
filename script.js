@@ -1,5 +1,6 @@
 let editIndex = null;
 
+let lastBrand = marca.value;
 
 const brandAdjustmentsConfig = {
   CAT: [
@@ -20,6 +21,13 @@ const brandAdjustmentsConfig = {
     { label: "Margen 70%", value: 70 },
   ]
 };
+
+function updateBrandInputsTemp() {
+  brandInputsTemp = [...document.querySelectorAll(".brand-input")]
+    .map(i => Number(i.value))
+    .filter(v => v > 0);
+}
+
 
 function renderBrandAdjustments() {
   const box = document.getElementById("brandAdjustmentsBox");
@@ -42,8 +50,8 @@ function renderBrandAdjustments() {
   if (["CTP", "Handook", "IPD"].includes(brand)) {
     box.innerHTML = `
       <div class="discount-input-group">
-        <input type="number" class="brand-input" placeholder="+ %" />
-        <input type="number" class="brand-input" placeholder="+ %" />
+        <input type="number" class="brand-input" placeholder="+ %" value="${brandInputsTemp[0] || ""}" oninput="updateBrandInputsTemp()" />
+        <input type="number" class="brand-input" placeholder="+ %" value="${brandInputsTemp[1] || ""}" oninput="updateBrandInputsTemp()" />
       </div>
     `;
     return;
@@ -78,6 +86,7 @@ function renderBrandAdjustments() {
   }
 }
 
+
 function addBrandAdjustment() {
   const input = document.getElementById("brandAdjInput");
   const value = Number(input.value);
@@ -94,16 +103,35 @@ function removeBrandAdjustment() {
   renderBrandAdjustments();
 }
 
+function saveCurrentBrandMemory() {
+
+  if (!lastBrand) return;
+
+  const inputs = [...document.querySelectorAll(".brand-input")];
+
+  if (inputs.length) {
+    brandMemory[lastBrand] = inputs
+      .map(i => Number(i.value))
+      .filter(v => v > 0);
+  }
+}
+
+
 function toggleOtraMarca() {
   otraMarca.style.display = marca.value === "Otro" ? "block" : "none";
 
-  brandAdjustmentsTemp = []; // reset personalizados
+  if (marca.value === "Otro") {
+    brandAdjustmentsTemp = [];
+  }
   renderBrandAdjustments();
 }
+
 let products = [];
 let discountsTemp = [];
 let brandAdjustmentsTemp = [];
+let brandInputsTemp = [];
 
+let brandMemory = {};
 
 /* =======================
    TIPO DE CAMBIO
@@ -198,13 +226,14 @@ function addProduct() {
 
   } else if (["CTP", "Handook", "IPD"].includes(marca.value)) {
 
-    adjustments = [...document.querySelectorAll(".brand-input")]
-      .map(i => Number(i.value))
-      .filter(v => v > 0);
+    adjustments = [...brandInputsTemp];
+
   }
 
-  const brandFinal = marca.value === "Otro" ? otraMarca.value : marca.value;
-
+  const brandFinal =
+    marca.value === "Otro"
+      ? (otraMarca.value || "Otro")
+      : marca.value;
   const product = {
     code: codigoProducto.value,
     brand: brandFinal,
@@ -214,7 +243,8 @@ function addProduct() {
     price: Number(precio.value),
     currency: monedaProducto.value,
     discounts: [...discountsTemp],
-    brandAdjustments: adjustments
+    brandAdjustments: adjustments,
+    showDiscounts: mostrarDescCheck.checked 
   };
 
   if (editIndex !== null) {
@@ -223,8 +253,7 @@ function addProduct() {
   } else {
     products.push(product);
   }
-  discountsTemp = [];
-  updateDiscountLabel();
+
   clearForm();
   renderTable();
 }
@@ -242,12 +271,12 @@ function clearProducts() {
 
 function clearForm() {
   codigoProducto.value = "";
-  marca.value = "CAT";
-  otraMarca.value = "";
-  otraMarca.style.display = "none";
   cantidad.value = 1;
   descripcion.value = "";
   precio.value = "";
+
+  renderBrandAdjustments();
+
   monedaProducto.value = "USD";
   updateMonedaLabel();
 }
@@ -336,11 +365,16 @@ function editProduct(index) {
   descripcion.value = p.desc;
   precio.value = p.price;
   monedaProducto.value = p.currency;
+  mostrarDescCheck.checked = p.showDiscounts ?? true;
 
   discountsTemp = [...p.discounts];
+  toggleOtraMarca();
+  
+  brandInputsTemp = [...(p.brandAdjustments || [])];
+  renderBrandAdjustments();
+  
   updateDiscountLabel();
 
-  toggleOtraMarca();
   updateMonedaLabel();
 }
 
@@ -380,7 +414,10 @@ async function buildPDF(ficha) {
     const subtotal = precioFinal * p.qty;
     total += subtotal;
 
-    const descTexto = p.desc;
+    const descTexto =
+      p.showDiscounts && p.discounts.length
+        ? `${p.desc} (Desc: ${p.discounts.join("%, ")}%)`
+        : p.desc;
 
 
     doc.text(String(index), 9, y);
@@ -433,3 +470,22 @@ function getFechaEmision() {
 
 renderBrandAdjustments();
 updatePDFPreview();
+
+marca.addEventListener("change", () => {
+
+  // Guardar valores de la marca anterior
+  saveCurrentBrandMemory();
+
+  toggleOtraMarca();
+
+  const brandActual =
+    marca.value === "Otro" ? otraMarca.value : marca.value;
+
+  // Recuperar memoria de la nueva marca
+  brandInputsTemp = [...(brandMemory[brandActual] || [])];
+
+  renderBrandAdjustments();
+
+  // Actualizar marca previa
+  lastBrand = brandActual;
+});

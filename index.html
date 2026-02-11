@@ -102,14 +102,19 @@
     <label>Descuentos (%)</label>
     <div class="discount-input-group">
       <input type="number" id="descuentoInput" placeholder="%" />
-
       <div class="discount-mini-buttons">
         <button type="button" onclick="addDiscount()">+</button>
         <button type="button" onclick="removeDiscount()">−</button>
       </div>
     </div>
-
     <small id="listaDescuentos">Ninguno descuento añadido</small>
+    <div class="discount-toggle">
+      <label class="brand-adjustment">
+        <input type="checkbox" id="mostrarDescCheck" checked>
+        <span>Mostrar descuentos en la hoja</span>
+      </label>
+    </div>
+      
 
   </div>
 </div>

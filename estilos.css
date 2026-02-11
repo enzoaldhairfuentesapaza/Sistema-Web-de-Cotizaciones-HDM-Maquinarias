@@ -460,3 +460,46 @@ table button:hover {
 .btn-currency:active {
   transform: scale(0.97);
 }
+
+.discount-toggle 
+{
+    margin-top: 12px; /* antes 6px */
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.discount-toggle input 
+{
+  width: 34px;
+  height: 18px;
+  appearance: none;
+  background: #333;
+  border-radius: 20px;
+  position: relative;
+  transition: 0.2s;
+}
+
+.discount-toggle input::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #aaa;
+  top: 2px;
+  left: 2px;
+  transition: 0.2s;
+}
+
+.discount-toggle input:checked {
+  background: #f1c40f;
+}
+
+.discount-toggle input:checked::before {
+  background: #000;
+  left: 18px;
+}
