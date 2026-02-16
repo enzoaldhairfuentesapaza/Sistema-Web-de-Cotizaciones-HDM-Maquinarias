@@ -10,8 +10,12 @@
 <body>
 
 <header>
+
   <img src="logo.png" alt="HDM Maquinari
   as" class="logo">
+  <button class="btn-historial" onclick="window.location.href='historial.html'">
+  Ver Historial
+  </button>
 </header>
 
 <div class="container">
@@ -107,7 +111,7 @@
         <button type="button" onclick="removeDiscount()">−</button>
       </div>
     </div>
-    <small id="listaDescuentos">Ninguno descuento añadido</small>
+    <small id="listaDescuentos">Ningun descuento añadido</small>
     <div class="discount-toggle">
       <label class="brand-adjustment">
         <input type="checkbox" id="mostrarDescCheck" checked>
@@ -122,8 +126,8 @@
 <div class="form-actions">
   <div class="actions">
     <button class="add" onclick="addProduct()">Agregar Producto</button>
-    <!--<button class="save" onclick="savePDF()">Guardar PDF </button>-->
-    <button class="save" onclick="downloadPDF()">Descargar PDF</button>
+    <button class="save" onclick="guardarCotizacion()">Guardar Cotizacion </button>
+    <button class="download" onclick="downloadPDF()">Descargar PDF</button>
     <button class="delete" onclick="clearProducts()">Limpiar Documento</button>
   </div>
 </div>
@@ -134,7 +138,7 @@
 
 <div class="form-row">
   <div>
-    <label>Tipo de cambio (SUNAT)</label>
+    <label>Tipo de cambio </label>
     <input type="number" id="tc" step="0.01" />
   </div>
 <!--
@@ -180,7 +184,7 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="script.js"></script>
+<script type="module" src="script.js"></script>
 
 </body>
 </html>

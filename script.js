@@ -1,6 +1,15 @@
+import { supabase } from "./supabase.js";
+
 let editIndex = null;
+let numeroCotizacionActual = 1;
 
 let lastBrand = marca.value;
+
+async function inicializarNumeroCotizacion() {
+  numeroCotizacionActual = await obtenerSiguienteNumero();
+  updatePDFPreview(numeroCotizacionActual);
+}
+inicializarNumeroCotizacion();
 
 const brandAdjustmentsConfig = {
   CAT: [
@@ -145,7 +154,6 @@ function convertAll(target) {
   renderTable();
 }
 async function savePDF() {
-  const ficha = getNextFicha();
   const fecha = getFechaEmision();
 
   const clienteNombre = cliente.value || "Sin nombre";
@@ -161,7 +169,44 @@ async function savePDF() {
   localStorage.setItem("historial", JSON.stringify(historial));
 }
 
-async function loadTipoCambio() {
+tc.value = 3.75;
+
+async function cargarListaCotizaciones() {
+
+  const lista = await obtenerCotizaciones();
+
+  const tbody = document.getElementById("tablaCotizaciones");
+  tbody.innerHTML = "";
+
+  lista.forEach(c => {
+
+    tbody.innerHTML += `
+      <tr>
+        <td>${c.id}</td>
+        <td>${c.cliente}</td>
+        <td>${new Date(c.fecha).toLocaleDateString()}</td>
+        <td>${c.total}</td>
+        <td>
+          <button onclick='cargarCotizacionDesdeDB(${JSON.stringify(c)})'>
+            Abrir
+          </button>
+        </td>
+      </tr>
+    `;
+  });
+}
+
+function cargarCotizacionDesdeDB(coti) {
+
+  cliente.value = coti.cliente;
+  products = coti.productos;
+
+  renderTable();
+}
+
+
+
+/*async function loadTipoCambio() {
   try {
     const res = await fetch("https://api.apis.net.pe/v1/tipo-cambio-sunat");
     const data = await res.json();
@@ -171,7 +216,7 @@ async function loadTipoCambio() {
   }
 }
 loadTipoCambio();
-
+*/
 /* =======================
    UI
 ======================= */
@@ -181,14 +226,6 @@ function updateMonedaLabel() {
 }
 updateMonedaLabel();
 
-function getNextFicha() {
-  let last = localStorage.getItem("ultimaFicha");
-  if (!last) last = "0000000000";
-
-  const next = (parseInt(last) + 1).toString().padStart(10, "0");
-  localStorage.setItem("ultimaFicha", next);
-  return next;
-}
 
 /* =======================
    DESCUENTOS
@@ -209,7 +246,7 @@ function removeDiscount() {
 
 function updateDiscountLabel() {
   listaDescuentos.innerText =
-    discountsTemp.length ? discountsTemp.join("%, ") + "%" : "Ninguno";
+    discountsTemp.length ? discountsTemp.join("%, ") + "%" : "Ninguno descuento añadido";
 }
 
 /* =======================
@@ -253,7 +290,7 @@ function addProduct() {
   } else {
     products.push(product);
   }
-
+  saveCurrentBrandMemory();
   clearForm();
   renderTable();
 }
@@ -275,11 +312,21 @@ function clearForm() {
   descripcion.value = "";
   precio.value = "";
 
+  dni.value = "";
+  direccion.value = "";
+
+  // 👇 restaurar memoria de marca
+  const brandActual =
+    marca.value === "Otro" ? otraMarca.value : marca.value;
+
+  brandInputsTemp = [...(brandMemory[brandActual] || [])];
+
   renderBrandAdjustments();
 
   monedaProducto.value = "USD";
   updateMonedaLabel();
 }
+
 
 /* =======================
    CÁLCULO
@@ -342,7 +389,7 @@ function renderTable() {
             <button onclick="toggleCurrency(${i})">
               ${p.currency === "USD" ? "💲" : "🪙"}
             </button>
-            <button onclick="products.splice(${i},1);renderTable()">🗑️</button>
+            <button onclick="eliminarProducto(${i})">🗑️</button>
           </div>
         </td>
       </tr>
@@ -350,7 +397,7 @@ function renderTable() {
   });
 
   document.getElementById("total").innerText = total.toFixed(2);
-  updatePDFPreview();
+  updatePDFPreview(numeroCotizacionActual);
 }
 
 
@@ -383,7 +430,7 @@ function editProduct(index) {
 ======================= */
 
 
-async function buildPDF(ficha) {
+async function buildPDF(numeroCotizacion) {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF("p", "mm", "a4");
 
@@ -400,10 +447,13 @@ async function buildPDF(ficha) {
   doc.text(direccion.value || "-", 48, 74);
   doc.text(getFechaEmision(), 48, 80);
 
-  doc.setFontSize(20);
-  doc.text( ficha, 161, 44);
-  doc.setFontSize(9);
+  const numeroFormateado =
+    String(numeroCotizacion).padStart(7, "0");
+  doc.setFontSize(24);
 
+  doc.text(numeroFormateado, 161, 45);
+
+  doc.setFontSize(9);
 
   let y = 107;
   let total = 0;
@@ -438,25 +488,100 @@ async function buildPDF(ficha) {
 
   return doc;
 }
+async function obtenerSiguienteNumero() {
+
+  const { data, error } = await supabase
+    .from("cotizaciones")
+    .select("id")
+    .order("id", { ascending: false })
+    .limit(1)
+    .single();
+
+  if (error && error.code !== "PGRST116") {
+    console.error(error);
+    return 1;
+  }
+
+  return data ? data.id + 1 : 1;
+}
+
+
+async function guardarCotizacion() {
+
+  if (!products.length) {
+    alert("Agrega al menos un producto");
+    return;
+  }
+
+  const clienteNombre = cliente.value || "Sin nombre";
+  const clienteDni = dni.value || "";
+  const clienteDireccion = direccion.value || "";
+
+  const total = Number(document.getElementById("total").innerText);
+
+  const { data, error } = await supabase
+    .from("cotizaciones")
+    .insert([
+      {
+        cliente: clienteNombre,
+        dni: clienteDni,
+        direccion: clienteDireccion,
+        fecha: new Date().toISOString(),
+        productos: products,
+        total: total
+      }
+    ])
+    .select()
+    .single();
+
+  if (error) {
+    console.error(error);
+    alert("Error guardando cotización");
+    return;
+  }
+
+  const idGenerado = data.id;
+
+  alert(`Cotización guardada correctamente ✅ N° ${idGenerado}`);
+  updatePDFPreview(idGenerado);
+}
+
+
+async function obtenerCotizaciones() {
+
+  const { data, error } = await supabase
+    .from("cotizaciones")
+    .select("*")
+    .order("id", { ascending: false })
+  if (error) {
+    console.error(error);
+    return [];
+  }
+
+  return data;
+}
+
+function cargarCotizacion(coti) {
+
+  cliente.value = coti.cliente || "";
+  dni.value = coti.dni || "";
+  direccion.value = coti.direccion || "";
+
+  products = coti.productos || [];
+
+  renderTable();
+}
 
 
 
-async function updatePDFPreview() {
-  const fichaPreview = getPreviewFicha();
-  const doc = await buildPDF(fichaPreview);
+async function updatePDFPreview(id = numeroCotizacionActual) {
+  const doc = await buildPDF(id);
   pdfPreview.src = URL.createObjectURL(doc.output("blob"));
 }
 
-function getPreviewFicha() {
-  let last = localStorage.getItem("ultimaFicha");
-  if (!last) last = "0000000000";
-
-  return (parseInt(last) + 1).toString().padStart(10, "0");
-}
 async function downloadPDF() {
-  const fichaPreview = getPreviewFicha();
-  const doc = await buildPDF(fichaPreview);
-  doc.save(`cotizacion_${fichaPreview}.pdf`);
+  const doc = await buildPDF("PREVIEW");
+  doc.save(`cotizacion_preview.pdf`);
 }
 
 function getFechaEmision() {
@@ -469,7 +594,7 @@ function getFechaEmision() {
 }
 
 renderBrandAdjustments();
-updatePDFPreview();
+updatePDFPreview(0);
 
 marca.addEventListener("change", () => {
 
@@ -489,3 +614,49 @@ marca.addEventListener("change", () => {
   // Actualizar marca previa
   lastBrand = brandActual;
 });
+
+async function cargarCotizacionDesdeNumero() {
+
+  const id = localStorage.getItem("cotizacionAbrir");
+
+  if (!id) return;
+
+  const { data } = await supabase
+    .from("cotizaciones")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (!data) return;
+
+  cliente.value = data.cliente || "";
+  dni.value = data.dni || "";
+  direccion.value = data.direccion || "";
+  products = data.productos || [];
+
+  renderTable();
+
+  localStorage.removeItem("cotizacionAbrir");
+}
+
+cargarCotizacionDesdeNumero();
+
+
+
+function eliminarProducto(index){
+  products.splice(index,1);
+  renderTable();
+}
+
+window.eliminarProducto = eliminarProducto;
+window.addProduct = addProduct;
+window.guardarCotizacion = guardarCotizacion;
+window.downloadPDF = downloadPDF;
+window.clearProducts = clearProducts;
+window.addDiscount = addDiscount;
+window.removeDiscount = removeDiscount;
+window.toggleOtraMarca = toggleOtraMarca;
+window.updatePDFPreview = updatePDFPreview;
+window.toggleCurrency = toggleCurrency;
+window.editProduct = editProduct;
+window.renderTable = renderTable;
