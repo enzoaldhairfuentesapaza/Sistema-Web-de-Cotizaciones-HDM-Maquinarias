@@ -11,26 +11,6 @@ async function inicializarNumeroCotizacion() {
 }
 inicializarNumeroCotizacion();
 
-const brandAdjustmentsConfig = {
-  CAT: [
-    { label: "IGV 18%", value: 18 },
-  ],
-  CTP: [
-    { label: "Margen 35%", value: 35 },
-    { label: "Margen 40%", value: 40 },
-    { label: "Margen 50%", value: 50 },
-
-  ],
-  Handook: [
-    { label: "Margen 50%", value: 50 },
-    { label: "Margen 70%", value: 70 },
-  ],
-  IPD: [
-    { label: "Margen 50%", value: 50 },
-    { label: "Margen 70%", value: 70 },
-  ]
-};
-
 function updateBrandInputsTemp() {
   brandInputsTemp = [...document.querySelectorAll(".brand-input")]
     .map(i => Number(i.value))
@@ -169,7 +149,7 @@ async function savePDF() {
   localStorage.setItem("historial", JSON.stringify(historial));
 }
 
-tc.value = 3.75;
+tc.value = "";
 
 async function cargarListaCotizaciones() {
 
@@ -332,22 +312,33 @@ function clearForm() {
    CÁLCULO
 ======================= */
 function calcularPrecioFinal(p) {
-  let precio = p.price;
-  const tcambio = Number(tc.value);
 
-  if (p.currency === "USD") {
-    precio *= tcambio;
+  let precio = p.price;
+
+  // 1️⃣ Primero aplicar aumentos de marca
+  if (p.brandAdjustments?.length) {
+    precio = p.brandAdjustments.reduce(
+      (acc, a) => acc * (1 + a / 100),
+      precio
+    );
   }
 
-  // aplicar ajustes de marca seleccionados
-  p.brandAdjustments?.forEach(a => {
-    precio *= (1 + a / 100);
-  });
+  // 2️⃣ Luego aplicar descuentos reales
+  if (p.discounts?.length) {
+    precio = p.discounts.reduce(
+      (acc, d) => acc * (1 - d / 100),
+      precio
+    );
+  }
 
-  // aplicar descuentos reales
-  p.discounts.forEach(d => {
-    precio *= (1 - d / 100);
-  });
+  // 3️⃣ Convertir a soles SOLO si es USD y si hay tipo de cambio
+  if (p.currency === "USD") {
+    const tcambio = Number(tc.value);
+
+    if (tcambio && tcambio > 0) {
+      precio *= tcambio;
+    }
+  }
 
   return Math.round(precio);
 }
