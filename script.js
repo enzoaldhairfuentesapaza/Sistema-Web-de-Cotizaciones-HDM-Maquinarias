@@ -233,6 +233,18 @@ function updateDiscountLabel() {
    PRODUCTOS
 ======================= */
 function addProduct() {
+
+  // ✅ VALIDAR TIPO DE CAMBIO SI MONEDA ES USD
+  if (monedaProducto.value === "USD") {
+    const tipoCambio = Number(tc.value);
+
+    if (!tipoCambio || tipoCambio <= 0) {
+      alert("⚠️ Debes ingresar un tipo de cambio válido antes de agregar un producto en USD.");
+      tc.focus();
+      return;
+    }
+  }
+
   let adjustments = [];
 
   if (marca.value === "CAT" || marca.value === "Otro") {
@@ -243,14 +255,16 @@ function addProduct() {
 
   } else if (["CTP", "Handook", "IPD"].includes(marca.value)) {
 
-    adjustments = [...brandInputsTemp];
-
+      adjustments = [...document.querySelectorAll(".brand-input")]
+        .map(i => Number(i.value))
+        .filter(v => v > 0);
   }
 
   const brandFinal =
     marca.value === "Otro"
       ? (otraMarca.value || "Otro")
       : marca.value;
+
   const product = {
     code: codigoProducto.value,
     brand: brandFinal,
@@ -270,6 +284,7 @@ function addProduct() {
   } else {
     products.push(product);
   }
+
   saveCurrentBrandMemory();
   clearForm();
   renderTable();
@@ -292,9 +307,6 @@ function clearForm() {
   descripcion.value = "";
   precio.value = "";
 
-  dni.value = "";
-  direccion.value = "";
-
   // 👇 restaurar memoria de marca
   const brandActual =
     marca.value === "Otro" ? otraMarca.value : marca.value;
@@ -314,24 +326,18 @@ function clearForm() {
 function calcularPrecioFinal(p) {
 
   let precio = p.price;
-
-  // 1️⃣ Primero aplicar aumentos de marca
   if (p.brandAdjustments?.length) {
     precio = p.brandAdjustments.reduce(
       (acc, a) => acc * (1 + a / 100),
       precio
     );
   }
-
-  // 2️⃣ Luego aplicar descuentos reales
   if (p.discounts?.length) {
     precio = p.discounts.reduce(
       (acc, d) => acc * (1 - d / 100),
       precio
     );
   }
-
-  // 3️⃣ Convertir a soles SOLO si es USD y si hay tipo de cambio
   if (p.currency === "USD") {
     const tcambio = Number(tc.value);
 

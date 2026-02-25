@@ -186,5 +186,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script type="module" src="script.js"></script>
 
+
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <h3>Editar Producto</h3>
+
+    <input id="editCodigo" placeholder="Código">
+    <input id="editDescripcion" placeholder="Descripción">
+    <input id="editPrecio" type="number" placeholder="Precio">
+    <input id="editCantidad" type="number" placeholder="Cantidad">
+
+    <div class="modal-buttons">
+      <button onclick="guardarEdicion()">Guardar</button>
+      <button onclick="cerrarModal()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
