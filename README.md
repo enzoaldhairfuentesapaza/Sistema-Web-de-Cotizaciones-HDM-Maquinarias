@@ -1,20 +1,33 @@
 # 🧾 HDM Cotizador Web
 
-Aplicación web desarrollada para **HDM Maquinarias** que permite generar cotizaciones a la moneda nacional del Peru (S/.) SOLES, de repuestos y maquinaria de forma rápida, automática y visual, incluyendo generación de documentos PDF con vista previa en tiempo real. 
+Aplicación web desarrollada para **HDM Maquinarias** que permite generar cotizaciones de repuestos y maquinaria de forma rápida, automática y visual, con conversión de moneda, lógica de negocio por marca y generación de documentos PDF con vista previa en tiempo real.
 
 ---
 
-## 🚀 Características
+## 🚀 Características actuales
 
 ✅ Gestión dinámica de productos  
+✅ Autocompletado inteligente de productos (por código o nombre) 🔍  
+✅ Carga automática de:
+- Código  
+- Descripción  
+- Unidad  
+- Marca  
+
 ✅ Cálculo automático de precios según marca  
-✅ Aplicación de descuentos personalizados  
-✅ Ajustes porcentuales por marca (IGV / márgenes comerciales)  
-✅ Conversión automática entre USD y PEN  
-✅ Integración con tipo de cambio SUNAT  
+✅ Ajustes porcentuales por marca (márgenes comerciales)  
+- CAT: +18% automático  
+- Otras marcas: valores configurables  
+
+✅ Aplicación de descuentos personalizados (%)  
+✅ Conversión manual entre USD y PEN  
+✅ Tipo de cambio configurable por el usuario  
 ✅ Vista previa del PDF en tiempo real  
 ✅ Generación y descarga de cotizaciones en PDF  
-✅ Interfaz simple e intuitiva  
+✅ Edición de productos dentro de la tabla  
+✅ Historial de cotizaciones almacenado en la nube (Supabase) ☁️  
+✅ Carga y visualización de cotizaciones anteriores  
+✅ Interfaz moderna e intuitiva  
 
 ---
 
@@ -24,80 +37,125 @@ Aplicación web desarrollada para **HDM Maquinarias** que permite generar cotiza
 - CSS3  
 - JavaScript (Vanilla JS)  
 - jsPDF (Generación de PDF)  
-- API SUNAT Tipo de Cambio  
+- Supabase (Base de datos y persistencia)
 
 ---
 
 ## 📷 Funcionalidad principal
 
-La aplicación permite:
+### 1. Registrar datos del cliente
+- Nombre  
+- DNI  
+- Dirección  
 
-1. Registrar datos del cliente
-2. Agregar productos con:
-   - Código
-   - Marca
-   - Cantidad
-   - Precio base
-   - Descripción
-   - Moneda
-   - Descuentos
+---
 
-3. Aplicar automáticamente:
-   - Ajustes por marca
-   - Conversión de moneda
-   - Redondeo a favor del cliente
+### 2. Agregar productos con autocompletado inteligente
 
-4. Visualizar la cotización en tiempo real
+Puedes escribir:
+- Código del producto  
+- Nombre del producto  
 
-5. Descargar la cotización en formato PDF
+El sistema sugiere coincidencias y al seleccionar:
 
-📊 Reglas de cálculo
+✔ Completa automáticamente:
+- Código  
+- Descripción  
+- Unidad  
+- Marca  
 
-El precio final depende de:
+---
 
-- Ajustes automáticos por marca
-- Tipo de moneda
-- Tipo de cambio
-- Descuentos manuales
-- Redondeo hacia abajo a favor del cliente
+### 3. Configurar producto
 
-🗺️ Planes futuros (Roadmap)
+Cada producto incluye:
 
-☁️ Persistencia en la nube
+- Código  
+- Marca  
+- Unidad  
+- Cantidad  
+- Precio base  
+- Moneda (USD o PEN)  
+- Descuentos (%)  
 
-- Guardar historial de cotizaciones
-- Recuperar cotizaciones antiguas
-- Edición posterior de documentos
+---
 
-📋 Historial de cotizaciones
+### 4. Aplicar automáticamente
 
-- Listado de cotizaciones generadas
-- Filtros por cliente o fecha
-- Re-descarga de PDFs
+El sistema calcula en tiempo real:
 
-👥 Multiusuario
+- Ajustes por marca  
+- Descuentos acumulativos  
+- Conversión de moneda (según tipo de cambio)  
+- Subtotales y total general  
 
-- Cuentas para vendedores
-- Control de acceso
-- Registro de actividad
+---
 
-📱 Mejoras de interfaz
+### 5. Visualizar y generar PDF
 
-- Diseño responsive
-- Mejor experiencia en tablets y móviles
+- Vista previa en tiempo real  
+- Generación automática del documento  
+- Descarga en PDF lista para enviar al cliente  
 
-🧾 Funciones administrativas
+---
 
-- Panel de reportes
-- Estadísticas de ventas
-- Exportación de datos
+### 6. Guardar y recuperar cotizaciones
 
-🔐 Seguridad
+- Guardado en base de datos (Supabase)  
+- Recuperación de cotizaciones anteriores  
+- Edición sin modificar el original (versionado)
 
-- Autenticación de usuarios
-- Respaldo automático de información
+---
 
+## 📊 Reglas de cálculo
 
-🎯 Objetivo del proyecto
+El precio final se calcula considerando:
 
-Optimizar el proceso de cotización en HDM Maquinarias, reduciendo errores manuales, mejorando la velocidad de atención al cliente y facilitando el almacenamiento de información.
+- Ajustes porcentuales por marca  
+- Descuentos aplicados  
+- Tipo de cambio (si está en USD)  
+- Cantidad del producto  
+- Redondeo final  
+
+---
+
+## 🧠 Lógica destacada
+
+- Autocompletado dinámico tipo buscador  
+- Sincronización automática entre producto y formulario  
+- Sistema flexible de ajustes por marca  
+- Persistencia en la nube  
+- Generación de documentos profesionales  
+
+---
+
+## 🗺️ Roadmap (Mejoras futuras)
+
+### 📊 Reportes y análisis
+- Estadísticas de ventas  
+- Reportes por cliente  
+- Exportación de datos  
+
+### 👥 Multiusuario
+- Sistema de cuentas  
+- Control de acceso  
+- Registro de actividad  
+
+### 📱 UI/UX
+- Diseño responsive  
+- Optimización para móviles y tablets  
+
+### ⚡ Mejoras técnicas
+- Navegación con teclado en buscador  
+- Optimización para grandes volúmenes de productos  
+- Validaciones avanzadas  
+
+### 🔐 Seguridad
+- Autenticación de usuarios  
+- Respaldo automático  
+
+---
+
+## 🎯 Objetivo del proyecto
+
+Optimizar el proceso de cotización en **HDM Maquinarias**, reduciendo errores manuales, acelerando la atención al cliente y centralizando la información en una plataforma moderna, eficiente y escalable.
