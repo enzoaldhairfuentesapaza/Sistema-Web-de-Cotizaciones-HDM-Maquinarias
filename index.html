@@ -23,7 +23,11 @@
 <!-- PANEL IZQUIERDO -->
 <div class="left-panel">
 
-<h2>Cotización</h2>
+<h2 id="tituloCotizacion">Cotización Nueva</h2>
+
+<p id="modoEdicionAviso" class="aviso-edicion" style="display:none;">
+  Estás visualizando una cotización anterior. Al guardar, se creará una nueva versión sin modificar la original.
+</p>
 
 <div class="form-row">
 
@@ -46,6 +50,8 @@
 </div>
 
 <hr>
+
+<h3 id="tituloProducto">Nuevo Producto</h3>
 
 <div class="form-row">
   <div>
@@ -115,9 +121,12 @@
     <div class="discount-toggle">
       <label class="brand-adjustment">
         <input type="checkbox" id="mostrarDescCheck" checked>
-        <span>Mostrar descuentos en la hoja</span>
+        <span>Mostrar descuentos en descripcion</span>
       </label>
     </div>
+          <small class="info-text">
+        Solo afecta la visualización en el PDF, los descuentos igual se toman en cuenta sobre el precio original
+      </small>
       
 
   </div>
@@ -140,6 +149,9 @@
   <div>
     <label>Tipo de cambio </label>
     <input type="number" id="tc" step="0.01" />
+    <small class="info-text">
+    El tipo de cambio solo se aplica a productos en USD
+  </small>
   </div>
 <!--
 <div class="currency-global">

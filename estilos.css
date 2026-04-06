@@ -630,3 +630,65 @@ table button:hover {
   flex-direction: column;
   gap: 10px;
 }
+
+.filtros-container {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px;
+  margin: 15px auto;
+
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #444;
+
+  max-width: 800px;
+}
+
+/* inputs dentro */
+.filtros-container input,
+.filtros-container select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #111;
+  color: #fff;
+  font-size: 13px;
+  outline: none;
+}
+
+.filtros-container input:focus,
+.filtros-container select:focus {
+  outline: 2px solid #f1c40f;
+}
+
+/* buscador más grande */
+#buscadorCotizaciones {
+  flex: 1;
+  min-width: 250px;
+}
+.aviso-edicion {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+
+  background: rgba(241, 196, 15, 0.15);
+  border: 1px solid #f1c40f;
+
+  color: #f1c40f;
+  font-size: 13px;
+
+  text-align: center;
+}
+
+.info-text {
+  display: block;
+  margin-top: 4px;
+
+  font-size: 11px;
+  color: #bbb;
+
+  opacity: 0.85;
+}

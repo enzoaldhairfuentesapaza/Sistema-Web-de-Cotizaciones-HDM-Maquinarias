@@ -1,4 +1,8 @@
+//script.js
 import { supabase } from "./supabase.js";
+
+const tituloCotizacion = document.getElementById("tituloCotizacion");
+tituloCotizacion.innerText = "Cotización Nueva";
 
 let editIndex = null;
 let numeroCotizacionActual = 1;
@@ -202,7 +206,10 @@ loadTipoCambio();
 ======================= */
 
 function updateMonedaLabel() {
-  monedaLabel.innerText = monedaProducto.value;
+  const label = document.getElementById("monedaLabel");
+  const select = document.getElementById("monedaProducto");
+
+  label.innerText = select.value;
 }
 updateMonedaLabel();
 
@@ -234,12 +241,11 @@ function updateDiscountLabel() {
 ======================= */
 function addProduct() {
 
-  // ✅ VALIDAR TIPO DE CAMBIO SI MONEDA ES USD
   if (monedaProducto.value === "USD") {
     const tipoCambio = Number(tc.value);
 
     if (!tipoCambio || tipoCambio <= 0) {
-      alert("⚠️ Debes ingresar un tipo de cambio válido antes de agregar un producto en USD.");
+      alert("Debes ingresar un tipo de cambio válido antes de agregar un producto en USD.");
       tc.focus();
       return;
     }
@@ -288,6 +294,7 @@ function addProduct() {
   saveCurrentBrandMemory();
   clearForm();
   renderTable();
+  document.getElementById("tituloProducto").innerText = "Nuevo Producto";
 }
 
 function toggleCurrency(index) {
@@ -382,11 +389,13 @@ function renderTable() {
         <td>${subtotal.toFixed(2)}</td>
         <td>
           <div class="actions-wrap">
-            <button onclick="editProduct(${i})">✏️</button>
-            <button onclick="toggleCurrency(${i})">
+            <button title="Editar producto" onclick="editProduct(${i})">✏️</button>
+
+            <button title="Cambiar moneda (USD / PEN)" onclick="toggleCurrency(${i})">
               ${p.currency === "USD" ? "💲" : "🪙"}
             </button>
-            <button onclick="eliminarProducto(${i})">🗑️</button>
+
+            <button title="Eliminar producto" onclick="eliminarProducto(${i})">🗑️</button>
           </div>
         </td>
       </tr>
@@ -398,7 +407,9 @@ function renderTable() {
 }
 
 
-function editProduct(index) {
+function editProduct(index) 
+{
+  document.getElementById("tituloProducto").innerText = `Editando Producto ${index + 1}`;
   const p = products[index];
   editIndex = index;
 
@@ -409,6 +420,7 @@ function editProduct(index) {
   descripcion.value = p.desc;
   precio.value = p.price;
   monedaProducto.value = p.currency;
+  updateMonedaLabel();
   mostrarDescCheck.checked = p.showDiscounts ?? true;
 
   discountsTemp = [...p.discounts];
@@ -502,19 +514,25 @@ async function obtenerSiguienteNumero() {
   return data ? data.id + 1 : 1;
 }
 
-
 async function guardarCotizacion() {
 
   if (!products.length) {
     alert("Agrega al menos un producto");
     return;
   }
+  
 
   const clienteNombre = cliente.value || "Sin nombre";
   const clienteDni = dni.value || "";
   const clienteDireccion = direccion.value || "";
 
   const total = Number(document.getElementById("total").innerText);
+
+  // 🧠 NUEVO: tipo de cambio
+  const tipoCambio = Number(tc.value) || 0;
+
+  // 🧠 NUEVO: cantidad total de productos (sumando cantidades)
+  const cantidadProductos = products.reduce((acc, p) => acc + p.qty, 0);
 
   const { data, error } = await supabase
     .from("cotizaciones")
@@ -525,7 +543,9 @@ async function guardarCotizacion() {
         direccion: clienteDireccion,
         fecha: new Date().toISOString(),
         productos: products,
-        total: total
+        total: total,
+        tipo_cambio: tipoCambio,
+        cantidad_productos: cantidadProductos
       }
     ])
     .select()
@@ -539,10 +559,9 @@ async function guardarCotizacion() {
 
   const idGenerado = data.id;
 
-  alert(`Cotización guardada correctamente ✅ N° ${idGenerado}`);
+  alert(`Cotización guardada correctamente N° ${idGenerado}`);
   updatePDFPreview(idGenerado);
 }
-
 
 async function obtenerCotizaciones() {
 
@@ -612,30 +631,40 @@ marca.addEventListener("change", () => {
   lastBrand = brandActual;
 });
 
-async function cargarCotizacionDesdeNumero() {
-
+async function cargarCotizacionDesdeNumero() 
+{
   const id = localStorage.getItem("cotizacionAbrir");
-
   if (!id) return;
 
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from("cotizaciones")
     .select("*")
     .eq("id", id)
     .single();
 
-  if (!data) return;
+  if (error || !data) {
+    console.error("Error cargando:", error);
+    return;
+  }
+
+  tituloCotizacion.innerText = `Editando Cotización N° ${data.id}`;
 
   cliente.value = data.cliente || "";
   dni.value = data.dni || "";
   direccion.value = data.direccion || "";
+
+  const tcInput = document.getElementById("tc");
+  tcInput.value = data.tipo_cambio ? Number(data.tipo_cambio) : "";
+
   products = data.productos || [];
+  updateMonedaLabel();
 
   renderTable();
 
   localStorage.removeItem("cotizacionAbrir");
+  const aviso = document.getElementById("modoEdicionAviso");
+  aviso.style.display = "block";
 }
-
 cargarCotizacionDesdeNumero();
 
 

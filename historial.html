@@ -6,51 +6,56 @@
 
   <link rel="stylesheet" href="estilos.css">
   <link rel="icon" href="icono.png">
-
 </head>
 
 <body>
 
 <header>
-
   <img src="logo.png" alt="HDM Maquinarias" class="logo">
 
   <button class="btn-historial" onclick="window.location.href='index.html'">
-     Nueva Cotización
+    Nueva Cotización
   </button>
-
 </header>
 
-    <div class="buscador-container">
-    <input 
-        type="text" 
-        id="buscadorCotizaciones" 
-        placeholder="Buscar por N° cotización, cliente, DNI o dirección..."
-    >
-    </div>
+<!-- 🔍 FILTROS -->
+<div class="filtros-container">
 
-  <div class="left-panel">
+  <input type="text" id="buscadorCotizaciones"
+    placeholder="Buscar...">
 
-    <h1 style="  text-align: center;">Historial de Cotizaciones</h1>
+  <input type="date" id="filtroFecha">
 
-    <table class="tabla-historial">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Cliente</th>
-          <th>Fecha</th>
-          <th>DNI</th>
-          <th>Dirección</th>
-          <th>Total</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
+  <select id="ordenId">
+    <option value="desc">Más reciente</option>
+    <option value="asc">Más antiguo</option>
+  </select>
 
-      <tbody id="tablaCotizaciones"></tbody>
-    </table>
+</div>
 
-  </div>
+<div class="left-panel">
 
+  <h1 style="text-align:center;">Historial de Cotizaciones</h1>
+
+  <table class="tabla-historial">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Fecha</th>
+        <th>DNI</th>
+        <th>Dirección</th>
+        <th>Total</th>
+        <th>T.C</th>
+        <th># Prod</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody id="tablaCotizaciones"></tbody>
+  </table>
+
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script type="module" src="historial.js"></script>

@@ -1,12 +1,15 @@
 import { supabase } from "./supabase.js";
+
 let listaCotizacionesGlobal = [];
 
+// =======================
+// OBTENER DATA
+// =======================
 async function obtenerCotizaciones() {
 
   const { data, error } = await supabase
     .from("cotizaciones")
-    .select("*")
-    .order("id", { ascending: false });
+    .select("*");
 
   if (error) {
     console.error(error);
@@ -16,23 +19,37 @@ async function obtenerCotizaciones() {
   return data;
 }
 
+// =======================
+// CARGAR LISTA
+// =======================
 async function cargarLista() {
+
+  const tbody = document.getElementById("tablaCotizaciones");
+  tbody.innerHTML = "<tr><td colspan='9'>Cargando...</td></tr>";
 
   const lista = await obtenerCotizaciones();
 
   listaCotizacionesGlobal = lista;
 
-  renderTabla(lista);
+  aplicarFiltros();
 }
 
+// =======================
+// RENDER TABLA
+// =======================
 function renderTabla(lista) {
 
   const tbody = document.getElementById("tablaCotizaciones");
-  tbody.innerHTML = "";
+
+  if (!lista.length) {
+    tbody.innerHTML = "<tr><td colspan='9'>Sin resultados</td></tr>";
+    return;
+  }
+
+  let html = "";
 
   lista.forEach(c => {
-
-    tbody.innerHTML += `
+    html += `
       <tr>
         <td>${c.id}</td>
         <td>${c.cliente}</td>
@@ -40,17 +57,74 @@ function renderTabla(lista) {
         <td>${c.dni || "-"}</td>
         <td>${c.direccion || "-"}</td>
         <td>${c.total}</td>
+        <td>${c.tipo_cambio || "-"}</td>
+        <td>${c.cantidad_productos || 0}</td>
         <td class="acciones">
-            <button onclick='abrirCotizacion(${c.id})'>✏️</button>
-            <button onclick='descargarPDF(${c.id})'>⬇️</button>
-            <button onclick='borrarCotizacion(${c.id})'>🗑️</button>
+          <button onclick='abrirCotizacion(${c.id})'>✏️</button>
+          <button onclick='descargarPDF(${c.id})'>⬇️</button>
+          <button onclick='borrarCotizacion(${c.id})'>🗑️</button>
         </td>
       </tr>
     `;
   });
 
+  tbody.innerHTML = html;
 }
 
+// =======================
+// FILTROS (TEXTO + FECHA + ORDEN)
+// =======================
+function aplicarFiltros() {
+
+  const texto = buscador.value.toLowerCase().trim();
+  const fechaSeleccionada = filtroFecha.value;
+  const orden = ordenId.value;
+
+  let filtrado = listaCotizacionesGlobal.filter(c => {
+
+    const coincideTexto =
+      String(c.id).includes(texto) ||
+      (c.cliente || "").toLowerCase().trim().includes(texto) ||
+      (c.dni || "").toLowerCase().trim().includes(texto) ||
+      (c.direccion || "").toLowerCase().trim().includes(texto);
+
+    let coincideFecha = true;
+
+    if (fechaSeleccionada) {
+      const fecha = new Date(c.fecha);
+
+      const fechaCoti =
+        fecha.getFullYear() + "-" +
+        String(fecha.getMonth() + 1).padStart(2, "0") + "-" +
+        String(fecha.getDate()).padStart(2, "0");
+      coincideFecha = fechaCoti === fechaSeleccionada;
+    }
+
+    console.log("Filtro fecha:", fechaSeleccionada);
+
+    const fecha = new Date(c.fecha);
+
+    const fechaCoti =
+      fecha.getFullYear() + "-" +
+      String(fecha.getMonth() + 1).padStart(2, "0") + "-" +
+      String(fecha.getDate()).padStart(2, "0");
+
+    console.log("Fecha BD:", fechaCoti)
+
+    return coincideTexto && coincideFecha;
+  });
+
+  // 🔥 ORDENAR
+  filtrado.sort((a, b) => {
+    return orden === "asc" ? a.id - b.id : b.id - a.id;
+  });
+
+  renderTabla(filtrado);
+}
+
+// =======================
+// BORRAR
+// =======================
 async function borrarCotizacion(id) {
 
   const confirmar = confirm("¿Seguro que deseas borrar esta cotización?");
@@ -68,11 +142,12 @@ async function borrarCotizacion(id) {
   }
 
   alert("Cotización eliminada ✅");
-
-  // refrescar tabla
   cargarLista();
 }
 
+// =======================
+// PDF
+// =======================
 async function descargarPDF(id) {
 
   const { data: cotizacion, error } = await supabase
@@ -109,14 +184,14 @@ async function descargarPDF(id) {
   let total = 0;
   let index = 1;
 
-  cotizacion.productos.forEach(p => {
+  (cotizacion.productos || []).forEach(p => {
 
     let precio = p.price;
 
-    if (p.currency === "USD") precio *= 3.75;
+    if (p.currency === "USD") precio *= (cotizacion.tipo_cambio || 3.75);
 
-    p.brandAdjustments?.forEach(a => precio *= (1 + a / 100));
-    p.discounts.forEach(d => precio *= (1 - d / 100));
+    (p.brandAdjustments || []).forEach(a => precio *= (1 + a / 100));
+    (p.discounts || []).forEach(d => precio *= (1 - d / 100));
 
     const precioFinal = Math.round(precio);
     const subtotal = precioFinal * p.qty;
@@ -140,45 +215,27 @@ async function descargarPDF(id) {
   doc.save(`Cotizacion_${cotizacion.id}.pdf`);
 }
 
-
+// =======================
+// NAVEGACIÓN
+// =======================
 window.abrirCotizacion = function(numero) {
-
-  // Guardamos el número en localStorage
   localStorage.setItem("cotizacionAbrir", numero);
-
-  // Volvemos a index
   window.location.href = "index.html";
 };
-
-window.volver = function() {
-  window.location.href = "index.html";
-};
-
-cargarLista();
-
-
-const buscador = document.getElementById("buscadorCotizaciones");
-
-buscador.addEventListener("input", () => {
-
-  const texto = buscador.value.toLowerCase();
-
-  const filtrado = listaCotizacionesGlobal.filter(c => {
-
-    return (
-      String(c.id).includes(texto) ||
-      (c.cliente || "").toLowerCase().includes(texto) ||
-      (c.dni || "").toLowerCase().includes(texto) ||
-      (c.direccion || "").toLowerCase().includes(texto)
-    );
-
-  });
-
-  renderTabla(filtrado);
-});
-    
-
 
 window.borrarCotizacion = borrarCotizacion;
 window.descargarPDF = descargarPDF;
 
+// =======================
+// EVENTOS
+// =======================
+const buscador = document.getElementById("buscadorCotizaciones");
+const filtroFecha = document.getElementById("filtroFecha");
+const ordenId = document.getElementById("ordenId");
+
+buscador.addEventListener("input", aplicarFiltros);
+filtroFecha.addEventListener("change", aplicarFiltros);
+ordenId.addEventListener("change", aplicarFiltros);
+
+// =======================
+cargarLista();
