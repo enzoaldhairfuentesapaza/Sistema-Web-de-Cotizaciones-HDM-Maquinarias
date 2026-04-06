@@ -1,13 +1,80 @@
 //script.js
 import { supabase } from "./supabase.js";
+import { productos } from "./productos.js";
 
 const tituloCotizacion = document.getElementById("tituloCotizacion");
 tituloCotizacion.innerText = "Cotización Nueva";
 
+const input = document.getElementById("codigoProducto");
+const sugerencias = document.getElementById("sugerencias");
+
+
 let editIndex = null;
 let numeroCotizacionActual = 1;
 
+const marca = document.getElementById("marca");
 let lastBrand = marca.value;
+
+
+document.addEventListener("click", (e) => {
+  if (!input.contains(e.target) && !sugerencias.contains(e.target)) {
+    sugerencias.innerHTML = "";
+  }
+});
+
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    sugerencias.innerHTML = "";
+  }
+});
+
+input.addEventListener("input", () => {
+  const valor = input.value.toLowerCase();
+  sugerencias.innerHTML = "";
+
+  if (!valor) 
+  {
+    sugerencias.innerHTML = "";
+    return;
+  }
+
+  const resultados = productos.filter(p =>
+    p.id.toLowerCase().includes(valor) ||
+    p.nombre.toLowerCase().includes(valor)
+  );
+
+  resultados.slice(0, 5).forEach(p => {
+    const div = document.createElement("div");
+
+    div.textContent = `${p.id} - ${p.nombre}`;
+    div.style.padding = "6px";
+    div.style.cursor = "pointer";
+
+    div.addEventListener("click", () => seleccionarProducto(p));
+
+    sugerencias.appendChild(div);
+  });
+});
+
+
+function seleccionarProducto(p) {
+  document.getElementById("codigoProducto").value = p.id;
+  document.getElementById("descripcion").value = p.nombre;
+  document.getElementById("unidad").value = p.unidad;
+
+  // 🔥 Marca automática (adaptado a tu select)
+  const selectMarca = document.getElementById("marca");
+
+  if ([...selectMarca.options].some(o => o.value === p.marca)) {
+    selectMarca.value = p.marca;
+  } else {
+    selectMarca.value = "Otro";
+    document.getElementById("otraMarca").style.display = "block";
+    document.getElementById("otraMarca").value = p.marca;
+  }
+  renderBrandAdjustments();
+  sugerencias.innerHTML = "";
+}
 
 async function inicializarNumeroCotizacion() {
   numeroCotizacionActual = await obtenerSiguienteNumero();
@@ -39,8 +106,8 @@ function renderBrandAdjustments() {
     return;
   }
 
-  // ================= CTP / Handook / IPD =================
-  if (["CTP", "Handook", "IPD"].includes(brand)) {
+  // ================= CTP / Handok / IPD =================
+  if (["CTP", "Handok", "IPD"].includes(brand)) {
     box.innerHTML = `
       <div class="discount-input-group">
         <input type="number" class="brand-input" placeholder="+ %" value="${brandInputsTemp[0] || ""}" oninput="updateBrandInputsTemp()" />
@@ -259,7 +326,7 @@ function addProduct() {
       "#brandAdjustmentsBox input:checked"
     )].map(i => Number(i.dataset.value));
 
-  } else if (["CTP", "Handook", "IPD"].includes(marca.value)) {
+  } else if (["CTP", "Handok", "IPD"].includes(marca.value)) {
 
       adjustments = [...document.querySelectorAll(".brand-input")]
         .map(i => Number(i.value))

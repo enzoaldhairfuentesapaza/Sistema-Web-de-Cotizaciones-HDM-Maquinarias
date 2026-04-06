@@ -56,7 +56,17 @@
 <div class="form-row">
   <div>
     <label>Código producto</label>
-    <input id="codigoProducto" />
+    <div style="position: relative;">
+      <input id="codigoProducto" autocomplete="off" />
+
+      <div id="sugerencias" style="
+        position: absolute;
+        background: white;
+        border: 1px solid #ccc;
+        width: 100%;
+        z-index: 1000;
+      "></div>
+    </div>
   </div>
 
   <div>
@@ -64,7 +74,7 @@
     <select id="marca" onchange="toggleOtraMarca()">
       <option value="CAT">CAT</option>
       <option value="CTP">CTP</option>
-      <option value="Handook">Handook</option>
+      <option value="Handok">HANDOK</option>
       <option value="IPD">IPD</option>
       <option value="Otro">Otro</option>
     </select>

@@ -692,3 +692,24 @@ table button:hover {
 
   opacity: 0.85;
 }
+
+#sugerencias div:hover {
+  background: #eee;
+}
+
+#sugerencias {
+  background: white;
+  color: black; /* 🔥 esto arregla el texto */
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 6px;
+}
+
+#sugerencias div {
+  padding: 8px;
+  cursor: pointer;
+}
+
+#sugerencias div:hover {
+  background: #f0f0f0;
+}

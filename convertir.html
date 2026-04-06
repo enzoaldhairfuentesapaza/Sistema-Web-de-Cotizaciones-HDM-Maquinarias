@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Convertir CSV a JSON</title>
+</head>
+<body>
+
+<h2>Convertir productos CSV a JSON</h2>
+
+<input type="file" id="fileInput">
+<button onclick="convertir()">Convertir</button>
+
+<pre id="output"></pre>
+
+<script>
+function convertir() {
+  const file = document.getElementById("fileInput").files[0];
+  if (!file) return alert("Sube tu archivo CSV");
+
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+    const text = e.target.result;
+
+    const lineas = text.split("\n");
+    const headers = lineas[0].split(";");
+
+    const data = [];
+
+    for (let i = 1; i < lineas.length; i++) {
+      if (!lineas[i].trim()) continue;
+
+    const valores = lineas[i].split(";");
+    
+      const obj = {
+        id: valores[0]?.trim(),
+        nombre: valores[1]?.trim(),
+        unidad: valores[2]?.trim(),
+        marca: valores[3]?.trim()
+      };
+
+      data.push(obj);
+    }
+
+    document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+  };
+
+  reader.readAsText(file);
+}
+</script>
+
+</body>
+</html>
