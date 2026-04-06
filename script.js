@@ -300,7 +300,7 @@ function removeDiscount() {
 
 function updateDiscountLabel() {
   listaDescuentos.innerText =
-    discountsTemp.length ? discountsTemp.join("%, ") + "%" : "Ninguno descuento añadido";
+    discountsTemp.length ? discountsTemp.join("%, ") + "%" : "Ningun descuento añadido";
 }
 
 /* =======================
@@ -357,11 +357,12 @@ function addProduct() {
   } else {
     products.push(product);
   }
-
+  document.getElementById("btnAgregar").innerText = "Agregar Producto";
+  document.getElementById("tituloProducto").innerText = "Nuevo Producto";
   saveCurrentBrandMemory();
   clearForm();
   renderTable();
-  document.getElementById("tituloProducto").innerText = "Nuevo Producto";
+
 }
 
 function toggleCurrency(index) {
@@ -476,6 +477,10 @@ function renderTable() {
 
 function editProduct(index) 
 {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
   document.getElementById("tituloProducto").innerText = `Editando Producto ${index + 1}`;
   const p = products[index];
   editIndex = index;
@@ -494,6 +499,9 @@ function editProduct(index)
   toggleOtraMarca();
   
   brandInputsTemp = [...(p.brandAdjustments || [])];
+
+  document.getElementById("btnAgregar").innerText = "Actualizar Producto";
+
   renderBrandAdjustments();
   
   updateDiscountLabel();
