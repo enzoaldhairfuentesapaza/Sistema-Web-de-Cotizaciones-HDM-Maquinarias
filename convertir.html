@@ -21,8 +21,7 @@ function convertir() {
   const reader = new FileReader();
 
   reader.onload = function(e) {
-    const text = e.target.result;
-
+    const text = e.target.result.replace(/^\uFEFF/, "");
     const lineas = text.split("\n");
     const headers = lineas[0].split(";");
 
@@ -46,7 +45,7 @@ function convertir() {
     document.getElementById("output").textContent = JSON.stringify(data, null, 2);
   };
 
-  reader.readAsText(file);
+  reader.readAsText(file, "UTF-8");
 }
 </script>
 

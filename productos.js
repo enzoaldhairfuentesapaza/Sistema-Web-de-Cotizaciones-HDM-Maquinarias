@@ -512,7 +512,7 @@ export const productos =
   },
   {
     "id": "2011234-DHM",
-    "nombre": "ADAPTADOR DE U�A ROMBO - DHM",
+    "nombre": "ADAPTADOR DE UÑA ROMBO - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
@@ -692,7 +692,7 @@ export const productos =
   },
   {
     "id": "2209083-ALT",
-    "nombre": "ALTERNATIVO U�A K80 - ALTERNATIVO",
+    "nombre": "ALTERNATIVO UÑA K80 - ALTERNATIVO",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
@@ -1982,7 +1982,7 @@ export const productos =
   },
   {
     "id": "1948371-CAT",
-    "nombre": "BARREL (2560081)CONJUNTO DE CA�ON - CAT",
+    "nombre": "BARREL (2560081)CONJUNTO DE CAÑON - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
@@ -2000,13 +2000,13 @@ export const productos =
   },
   {
     "id": "1948374-CAT",
-    "nombre": "BARREL AS-ID-CONJUNTO DE CA�ON - CAT",
+    "nombre": "BARREL AS-ID-CONJUNTO DE CAÑON - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "1884164-CAT",
-    "nombre": "BARREL-CA�ON DE MOTOR ROTACION - CAT",
+    "nombre": "BARREL-CAÑON DE MOTOR ROTACION - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
@@ -4646,13 +4646,13 @@ export const productos =
   },
   {
     "id": "1960226-CTP",
-    "nombre": "CA�ON - CTP",
+    "nombre": "CAÑON - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
     "id": "1111116-CTP",
-    "nombre": "CA�?N - CTP",
+    "nombre": "CAÑON - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
@@ -6464,19 +6464,19 @@ export const productos =
   },
   {
     "id": "2344629-CAT",
-    "nombre": "CONJUNTO DE CA�ON - CAT",
+    "nombre": "CONJUNTO DE CAÑON - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "4232123-CAT",
-    "nombre": "CONJUNTO DE CA�ON DR - CAT",
+    "nombre": "CONJUNTO DE CAÑON DR - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "1253005-CTP",
-    "nombre": "CONJUNTO DE CIG�E�AL - CTP",
+    "nombre": "CONJUNTO DE CIGUEÑAL - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
@@ -7058,7 +7058,7 @@ export const productos =
   },
   {
     "id": "2418368-CAT",
-    "nombre": "CONJUNTO DE INTERRUPTOR, MAGN�TICO - CAT",
+    "nombre": "CONJUNTO DE INTERRUPTOR, MAGNÉTICO - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
@@ -7454,19 +7454,19 @@ export const productos =
   },
   {
     "id": "3628853-CAT",
-    "nombre": "CONJUNTO DE SELLO DE CIGUE�AL - CAT",
+    "nombre": "CONJUNTO DE SELLO DE CIGUEÑAL - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "3628853-CTP",
-    "nombre": "CONJUNTO DE SELLO DE CIGUE�AL - CTP",
+    "nombre": "CONJUNTO DE SELLO DE CIGUEÑAL - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
     "id": "9Y9895-CTP",
-    "nombre": "CONJUNTO DE SELLO DE CIGUE�AL - CTP",
+    "nombre": "CONJUNTO DE SELLO DE CIGUEÑAL - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
@@ -7490,37 +7490,37 @@ export const productos =
   },
   {
     "id": "2223909-CAT",
-    "nombre": "CONJUNTO DE SELLO DEL CIGUE�AL - CAT",
+    "nombre": "CONJUNTO DE SELLO DEL CIGUEÑAL - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "2457339-CAT",
-    "nombre": "CONJUNTO DE SELLO DEL CIGUE�AL - CAT",
+    "nombre": "CONJUNTO DE SELLO DEL CIGUEÑAL - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "4W0452-CAT",
-    "nombre": "CONJUNTO DE SELLO DEL CIGUE�AL - CAT",
+    "nombre": "CONJUNTO DE SELLO DEL CIGUEÑAL - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "2223909-CTP",
-    "nombre": "CONJUNTO DE SELLO DEL CIGUE�AL - CTP",
+    "nombre": "CONJUNTO DE SELLO DEL CIGUEÑAL - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
     "id": "2457339-CTP",
-    "nombre": "CONJUNTO DE SELLO DEL CIGUE�AL - CTP",
+    "nombre": "CONJUNTO DE SELLO DEL CIGUEÑAL - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
     "id": "4W0452-CTP",
-    "nombre": "CONJUNTO DE SELLO DEL CIGUE�AL - CTP",
+    "nombre": "CONJUNTO DE SELLO DEL CIGUEÑAL - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
@@ -8780,37 +8780,37 @@ export const productos =
   },
   {
     "id": "1552263-CAT",
-    "nombre": "CU�A - CAT",
+    "nombre": "CUÑA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "3E3365-CAT",
-    "nombre": "CU�A - CAT",
+    "nombre": "CUÑA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "3E5180-CAT",
-    "nombre": "CU�A - CAT",
+    "nombre": "CUÑA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "1552261-CAT",
-    "nombre": "CU�A TAPON - CAT",
+    "nombre": "CUÑA TAPON - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "1552262-CAT",
-    "nombre": "CU�A TAPON - CAT",
+    "nombre": "CUÑA TAPON - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "1552276-CAT",
-    "nombre": "CU�A TAPON - CAT",
+    "nombre": "CUÑA TAPON - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
@@ -9422,31 +9422,31 @@ export const productos =
   },
   {
     "id": "1288945-CAT",
-    "nombre": "EMISOR DE LA SE�AL DE TEMPERATURA - CAT",
+    "nombre": "EMISOR DE LA SEÑAL DE TEMPERATURA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "2979314-CAT",
-    "nombre": "EMISOR DE LA SE�AL DE TEMPERATURA DE AGUA - CAT",
+    "nombre": "EMISOR DE LA SEÑAL DE TEMPERATURA DE AGUA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "2979314-CTP",
-    "nombre": "EMISOR DE LA SE�AL DE TEMPERATURA DE AGUA - CTP",
+    "nombre": "EMISOR DE LA SEÑAL DE TEMPERATURA DE AGUA - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
     "id": "2443106-CAT",
-    "nombre": "EMISOR DE SE�AL DE TEMPERATURA - CAT",
+    "nombre": "EMISOR DE SEÑAL DE TEMPERATURA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "1254812-CAT",
-    "nombre": "EMISOR SE�AL DE TEMPERATURA - CAT",
+    "nombre": "EMISOR SEÑAL DE TEMPERATURA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
@@ -10514,31 +10514,31 @@ export const productos =
   },
   {
     "id": "1912683-CAT",
-    "nombre": "ENGRANAJE CENTRAL PI�ON - CAT",
+    "nombre": "ENGRANAJE CENTRAL PIÑON - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "1695589-CTP",
-    "nombre": "ENGRANAJE CENTRAL PI�ON - CTP",
+    "nombre": "ENGRANAJE CENTRAL PIÑON - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
     "id": "1912683-CTP",
-    "nombre": "ENGRANAJE CENTRAL PI�ON - CTP",
+    "nombre": "ENGRANAJE CENTRAL PIÑON - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
     "id": "1695589-HDT",
-    "nombre": "ENGRANAJE CENTRAL PI�ON - HDT",
+    "nombre": "ENGRANAJE CENTRAL PIÑON - HDT",
     "unidad": "UNIDADES",
     "marca": "HDT"
   },
   {
     "id": "1912683-HDT",
-    "nombre": "ENGRANAJE CENTRAL PI�ON - HDT",
+    "nombre": "ENGRANAJE CENTRAL PIÑON - HDT",
     "unidad": "UNIDADES",
     "marca": "HDT"
   },
@@ -11060,7 +11060,7 @@ export const productos =
   },
   {
     "id": "2097463-CTP",
-    "nombre": "ESPACIADOR DE PI�ON - CTP",
+    "nombre": "ESPACIADOR DE PIÑON - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
@@ -11108,7 +11108,7 @@ export const productos =
   },
   {
     "id": "E7A13904-CAT",
-    "nombre": "EXCAVADORA HIDRAULICA, CATERPILLAR, 0330DV, A�O 2018 - CAT",
+    "nombre": "EXCAVADORA HIDRAULICA, CATERPILLAR, 0330DV, AÑO 2018 - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
@@ -15074,7 +15074,7 @@ export const productos =
   },
   {
     "id": "2885726-CAT",
-    "nombre": "JUNTA DE CIGUE�AL ROJA - CAT",
+    "nombre": "JUNTA DE CIGUEÑAL ROJA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
@@ -15250,7 +15250,7 @@ export const productos =
     "id": "KIT DE SELLO B,H NOK",
     "nombre": "KIT DE SELLO DE BOMBA HIDRAULICA 329-325DL - NOK",
     "unidad": "KIT (EQUIPO)",
-    "marca": "#�VALOR!"
+    "marca": "NOK"
   },
   {
     "id": "5717202-CAT",
@@ -18002,43 +18002,43 @@ export const productos =
   },
   {
     "id": "7T3408-ALT",
-    "nombre": "PASADOR DE U�A (325) - ALT",
+    "nombre": "PASADOR DE UÑA (325) - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
   {
     "id": "8E0468-ALT",
-    "nombre": "PASADOR DE U�A (330) - ALT",
+    "nombre": "PASADOR DE UÑA (330) - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
   {
     "id": "8E6358-ALT",
-    "nombre": "PASADOR DE U�A - 320 - ALT",
+    "nombre": "PASADOR DE UÑA - 320 - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
   {
     "id": "6Y3228-ALT",
-    "nombre": "PASADOR DE U�A J225 - ALT",
+    "nombre": "PASADOR DE UÑA J225 - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
   {
     "id": "8E6258-DHM",
-    "nombre": "PASADOR DE U�A J300 - DHM",
+    "nombre": "PASADOR DE UÑA J300 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "6T8558-ALT",
-    "nombre": "PASADOR DE U�A J550 - ALT",
+    "nombre": "PASADOR DE UÑA J550 - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
   {
     "id": "2011238-ALT",
-    "nombre": "PASADOR DE U�A ROMBO - ALT",
+    "nombre": "PASADOR DE UÑA ROMBO - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
@@ -18368,7 +18368,7 @@ export const productos =
   },
   {
     "id": "4F3657/4K0367-ALT",
-    "nombre": "PERNO-TUERCA PARA U�A DELANTERA - ALT",
+    "nombre": "PERNO-TUERCA PARA UÑA DELANTERA - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
@@ -18530,13 +18530,13 @@ export const productos =
   },
   {
     "id": "2357636-CTP",
-    "nombre": "PIN 110*700 C/O PU�O 336D - CTP",
+    "nombre": "PIN 110*700 C/O PUÑO 336D - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
     "id": "2357636-HDT",
-    "nombre": "PIN 110*700 C/O PU�O 336D - HDT",
+    "nombre": "PIN 110*700 C/O PUÑO 336D - HDT",
     "unidad": "UNIDADES",
     "marca": "HDT"
   },
@@ -19052,7 +19052,7 @@ export const productos =
   },
   {
     "id": "5000269-CAT",
-    "nombre": "PIN DE U�A ROMBO - CAT",
+    "nombre": "PIN DE UÑA ROMBO - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
@@ -19154,79 +19154,79 @@ export const productos =
   },
   {
     "id": "1107049-CAT",
-    "nombre": "PI�ON CENTRAL CUBO 325BL - CAT",
+    "nombre": "PIÑON CENTRAL CUBO 325BL - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "1107049-CTP",
-    "nombre": "PI�ON CENTRAL CUBO 325BL - CTP",
+    "nombre": "PIÑON CENTRAL CUBO 325BL - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
     "id": "1107049-HDT",
-    "nombre": "PI�ON CENTRAL CUBO 325BL - HDT",
+    "nombre": "PIÑON CENTRAL CUBO 325BL - HDT",
     "unidad": "UNIDADES",
     "marca": "HDT"
   },
   {
     "id": "6I6585-CTP",
-    "nombre": "PI�?N CENTRAL DE CUBO 320C-320D-323D - CTP",
+    "nombre": "PIÑON CENTRAL DE CUBO 320C-320D-323D - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
     "id": "6I6585-HDT",
-    "nombre": "PI�?N CENTRAL DE CUBO 320C-320D-323D - HDT",
+    "nombre": "PIÑON CENTRAL DE CUBO 320C-320D-323D - HDT",
     "unidad": "UNIDADES",
     "marca": "HDT"
   },
   {
     "id": "1107053-CTP",
-    "nombre": "PI�ON CUBO 325BL - CTP",
+    "nombre": "PIÑON CUBO 325BL - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
     "id": "1107053-HDT",
-    "nombre": "PI�ON CUBO 325BL - HDT",
+    "nombre": "PIÑON CUBO 325BL - HDT",
     "unidad": "UNIDADES",
     "marca": "HDT"
   },
   {
     "id": "1107056-CTP",
-    "nombre": "PI�ON DE CUBO 325BL - CTP",
+    "nombre": "PIÑON DE CUBO 325BL - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
     "id": "1107056-HDT",
-    "nombre": "PI�ON DE CUBO 325BL - HDT",
+    "nombre": "PIÑON DE CUBO 325BL - HDT",
     "unidad": "UNIDADES",
     "marca": "HDT"
   },
   {
     "id": "1484636-CTP",
-    "nombre": "PI�?N DE GIRO 320DL-323DL - CTP",
+    "nombre": "PIÑON DE GIRO 320DL-323DL - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
     "id": "1484636-HDT",
-    "nombre": "PI�?N DE GIRO 320DL-323DL - HDT",
+    "nombre": "PIÑON DE GIRO 320DL-323DL - HDT",
     "unidad": "UNIDADES",
     "marca": "HDT"
   },
   {
     "id": "7I7729-CTP",
-    "nombre": "PI�?N REDUCTOR GIRO 325 BL - CTP",
+    "nombre": "PIÑON REDUCTOR GIRO 325 BL - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
     "id": "7I7729-HDT",
-    "nombre": "PI�?N REDUCTOR GIRO 325 BL - HDT",
+    "nombre": "PIÑON REDUCTOR GIRO 325 BL - HDT",
     "unidad": "UNIDADES",
     "marca": "HDT"
   },
@@ -20642,31 +20642,31 @@ export const productos =
   },
   {
     "id": "7C4297-CAT",
-    "nombre": "RETEN DE CIGUE�AL - CAT",
+    "nombre": "RETEN DE CIGUEÑAL - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
-    "id": "KIT RET�N GATA 320BL-CTP",
+    "id": "KIT RETEN GATA 320BL-CTP",
     "nombre": "RETEN GATA 320BL - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
-    "id": "KIT RET�N GATA 323DL-CTP",
+    "id": "KIT RETEN GATA 323DL-CTP",
     "nombre": "RETEN GATA 323DL - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
-    "id": "KIT RET�N GATA 325BL-CTP",
+    "id": "KIT RETEN GATA 325BL-CTP",
     "nombre": "RETEN GATA 325 BL - CTP",
     "unidad": "KIT (EQUIPO)",
     "marca": "CTP"
   },
   {
-    "id": "KIT RET�N GATA 325DL-CTP",
-    "nombre": "RET�N GATA 325 DL - CTP",
+    "id": "KIT RETEN GATA 325DL-CTP",
+    "nombre": "RETEN GATA 325 DL - CTP",
     "unidad": "KIT (EQUIPO)",
     "marca": "CTP"
   },
@@ -20738,55 +20738,55 @@ export const productos =
   },
   {
     "id": "8E8469-ALT",
-    "nombre": "RETENEDOR DE U�A (330) - ALT",
+    "nombre": "RETENEDOR DE UÑA (330) - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
   {
     "id": "8E6359-ALT",
-    "nombre": "RETENEDOR DE U�A - 320 - ALT",
+    "nombre": "RETENEDOR DE UÑA - 320 - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
   {
     "id": "8E8409-ALT",
-    "nombre": "RETENEDOR DE U�A - 325 - ALT",
+    "nombre": "RETENEDOR DE UÑA - 325 - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
   {
     "id": "1078559-ALT",
-    "nombre": "RETENEDOR DE U�A - ALT",
+    "nombre": "RETENEDOR DE UÑA - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
   {
     "id": "8E5559-ALT",
-    "nombre": "RETENEDOR DE U�A - ALT",
+    "nombre": "RETENEDOR DE UÑA - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
   {
     "id": "S/C-ALT",
-    "nombre": "RETENEDOR DE U�A - ALT",
+    "nombre": "RETENEDOR DE UÑA - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
   {
     "id": "8E5559-CTP",
-    "nombre": "RETENEDOR DE U�A - CTP",
+    "nombre": "RETENEDOR DE UÑA - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
     "id": "8E5559-DHM",
-    "nombre": "RETENEDOR DE U�A - DHM",
+    "nombre": "RETENEDOR DE UÑA - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "8E6259-DHM",
-    "nombre": "RETENEDOR DE U�A J300 - DHM",
+    "nombre": "RETENEDOR DE UÑA J300 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
@@ -20834,7 +20834,7 @@ export const productos =
   },
   {
     "id": "4567043/4567042-ALT",
-    "nombre": "RETENEDOR Y MANGUITO DE U�A - ALT",
+    "nombre": "RETENEDOR Y MANGUITO DE UÑA - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
@@ -21074,7 +21074,7 @@ export const productos =
   },
   {
     "id": "RODILLO CS56-CAT",
-    "nombre": "RODILLO COMPACTADOR DE SUELOS VIBRATORIO DE TAMBOR LISO, MARCA CATERPILLAR MODELO CS56, SERIE DE UNIDAD FCS01157, SERIE DE MOTOR C6E52659, A�O DE FABRICACION 2012, PESO DE OPERACION 12 TOLENADAS. POTENCIA 147 HP. - CAT",
+    "nombre": "RODILLO COMPACTADOR DE SUELOS VIBRATORIO DE TAMBOR LISO, MARCA CATERPILLAR MODELO CS56, SERIE DE UNIDAD FCS01157, SERIE DE MOTOR C6E52659, AÑO DE FABRICACION 2012, PESO DE OPERACION 12 TOLENADAS. POTENCIA 147 HP. - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
@@ -22394,37 +22394,37 @@ export const productos =
   },
   {
     "id": "2209110-ALT",
-    "nombre": "SEGURO DE U�A K110 - ALT",
+    "nombre": "SEGURO DE UÑA K110 - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
   {
     "id": "2209130-ALT",
-    "nombre": "SEGURO DE U�A K130 - ALT",
+    "nombre": "SEGURO DE UÑA K130 - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
   {
     "id": "2209130-CAT",
-    "nombre": "SEGURO DE U�A K130 - CAT",
+    "nombre": "SEGURO DE UÑA K130 - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "2209090-ALT",
-    "nombre": "SEGURO DE U�A K80,K90,K100 - ALT",
+    "nombre": "SEGURO DE UÑA K80,K90,K100 - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
   {
     "id": "2011239-ALT",
-    "nombre": "SEGURO DE U�A ROMBO - ALT",
+    "nombre": "SEGURO DE UÑA ROMBO - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
   {
     "id": "2011239-CAT",
-    "nombre": "SEGURO DE U�A ROMBO - CAT",
+    "nombre": "SEGURO DE UÑA ROMBO - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
@@ -24758,7 +24758,7 @@ export const productos =
   },
   {
     "id": "2164457-CTP",
-    "nombre": "SELLO DE PI�ON - CTP",
+    "nombre": "SELLO DE PIÑON - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
@@ -24914,25 +24914,25 @@ export const productos =
   },
   {
     "id": "1662905-CAT",
-    "nombre": "SELLO DISE�ADO - CAT",
+    "nombre": "SELLO DISEÑADO - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "1359819-CAT",
-    "nombre": "SELLO DISE�ADO - CAT",
+    "nombre": "SELLO DISEÑADO - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "1359819-CTP",
-    "nombre": "SELLO DISE�ADO - CTP",
+    "nombre": "SELLO DISEÑADO - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
   {
     "id": "1662905-CTP",
-    "nombre": "SELLO DISE�ADO - CTP",
+    "nombre": "SELLO DISEÑADO - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
@@ -25760,7 +25760,7 @@ export const productos =
   },
   {
     "id": "7Y1508-CTP",
-    "nombre": "SILENCIADOR PEQUE�O 325 BL - CTP",
+    "nombre": "SILENCIADOR PEQUEÑO 325 BL - CTP",
     "unidad": "UNIDADES",
     "marca": "CTP"
   },
@@ -26900,37 +26900,37 @@ export const productos =
   },
   {
     "id": "3E3371-CAT",
-    "nombre": "TRABA DE RECEPTACULO DE CU�A - CAT",
+    "nombre": "TRABA DE RECEPTACULO DE CUÑA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "3E3377-CAT",
-    "nombre": "TRABA DE RECEPTACULO DE CU�A - CAT",
+    "nombre": "TRABA DE RECEPTACULO DE CUÑA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "3E3383-CAT",
-    "nombre": "TRABA DE RECEPTACULO DE CU�A - CAT",
+    "nombre": "TRABA DE RECEPTACULO DE CUÑA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "3E3389-CAT",
-    "nombre": "TRABA DE RECEPTACULO DE CU�A - CAT",
+    "nombre": "TRABA DE RECEPTACULO DE CUÑA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "1552258-CAT",
-    "nombre": "TRABA DE TAPON DE CU�A - CAT",
+    "nombre": "TRABA DE TAPON DE CUÑA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "1552259-CAT",
-    "nombre": "TRABA DE TAPON DE CU�A - CAT",
+    "nombre": "TRABA DE TAPON DE CUÑA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
@@ -27098,37 +27098,37 @@ export const productos =
   },
   {
     "id": "3368174-CAT",
-    "nombre": "TUBO DE CA�ERIA - CAT",
+    "nombre": "TUBO DE CAÑERIA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "3368175-CAT",
-    "nombre": "TUBO DE CA�ERIA - CAT",
+    "nombre": "TUBO DE CAÑERIA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "3368176-CAT",
-    "nombre": "TUBO DE CA�ERIA - CAT",
+    "nombre": "TUBO DE CAÑERIA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "3368177-CAT",
-    "nombre": "TUBO DE CA�ERIA - CAT",
+    "nombre": "TUBO DE CAÑERIA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "3368178-CAT",
-    "nombre": "TUBO DE CA�ERIA - CAT",
+    "nombre": "TUBO DE CAÑERIA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "3368179-CAT",
-    "nombre": "TUBO DE CA�ERIA - CAT",
+    "nombre": "TUBO DE CAÑERIA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
@@ -27422,283 +27422,283 @@ export const productos =
   },
   {
     "id": "4679813-CAT",
-    "nombre": "U�A - CAT",
+    "nombre": "UÑA - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "1U3202RC-DHM",
-    "nombre": "U�A - DHM",
+    "nombre": "UÑA - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "1U3252RC-DHM",
-    "nombre": "U�A - DHM",
+    "nombre": "UÑA - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "1U3352-VERDE-DHM",
-    "nombre": "U�A 320 - DHM",
+    "nombre": "UÑA 320 - DHM",
     "unidad": "UNIDADES",
     "marca": "VERDE-DHM"
   },
   {
     "id": "1U3352PT-DHM",
-    "nombre": "U�A 320 - DHM",
+    "nombre": "UÑA 320 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "S/C-GETLF",
-    "nombre": "U�A 325 - GETLF",
+    "nombre": "UÑA 325 - GETLF",
     "unidad": "UNIDADES",
     "marca": "GETLF"
   },
   {
     "id": "7T3402PT-DHM",
-    "nombre": "U�A 325 TALONERA - DHM",
+    "nombre": "UÑA 325 TALONERA - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "7T3402RC-LF",
-    "nombre": "U�A 325 VERDE - LF",
+    "nombre": "UÑA 325 VERDE - LF",
     "unidad": "UNIDADES",
     "marca": "LF"
   },
   {
     "id": "9W8452PT-GETLF",
-    "nombre": "U�A 330 TALONERA - GETLF",
+    "nombre": "UÑA 330 TALONERA - GETLF",
     "unidad": "UNIDADES",
     "marca": "GETLF"
   },
   {
     "id": "1U3452RC-LF",
-    "nombre": "U�A 330 VERDE - LF",
+    "nombre": "UÑA 330 VERDE - LF",
     "unidad": "UNIDADES",
     "marca": "LF"
   },
   {
     "id": "5054083-DHM",
-    "nombre": "U�A A80 - DHM",
+    "nombre": "UÑA A80 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "5054103-DHM",
-    "nombre": "U�A ADVANSYS A100 - DHM",
+    "nombre": "UÑA ADVANSYS A100 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "5054113-DHM",
-    "nombre": "U�A ADVANSYS A110 - DHM",
+    "nombre": "UÑA ADVANSYS A110 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "3814089-DHM",
-    "nombre": "U�A ADVANSYS A130 - DHM",
+    "nombre": "UÑA ADVANSYS A130 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "5054097-DHM",
-    "nombre": "U�A ADVANSYS A90 - DHM",
+    "nombre": "UÑA ADVANSYS A90 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "1U3352RC/8E6359/8E6358-DHM",
-    "nombre": "U�A DE 320 INCLUIDO SEGUROS - DHM",
+    "nombre": "UÑA DE 320 INCLUIDO SEGUROS - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "1U3352RC/8E6359/8E6358-HD",
-    "nombre": "U�A DE 320 INCLUIDO SEGUROS - HD",
+    "nombre": "UÑA DE 320 INCLUIDO SEGUROS - HD",
     "unidad": "UNIDADES",
     "marca": "HD"
   },
   {
     "id": "7T3402RC-A/7T3408-A/8E8409-DHM",
-    "nombre": "U�A DE 325 NORMALES INCLUIDO SEGUROS A - DHM",
+    "nombre": "UÑA DE 325 NORMALES INCLUIDO SEGUROS A - DHM",
     "unidad": "UNIDADES",
     "marca": "A/7T3408-A/8E8409-DHM"
   },
   {
     "id": "7T3402RC-B/7T3408/8E8409-DHM",
-    "nombre": "U�A DE 325 NORMALES INCLUIDO SEGUROS B - DHM",
+    "nombre": "UÑA DE 325 NORMALES INCLUIDO SEGUROS B - DHM",
     "unidad": "UNIDADES",
     "marca": "B/7T3408/8E8409-DHM"
   },
   {
     "id": "7R3402RC-HD",
-    "nombre": "U�A DE 325 ROJAS-REFORZADAS - HD",
+    "nombre": "UÑA DE 325 ROJAS-REFORZADAS - HD",
     "unidad": "UNIDADES",
     "marca": "HD"
   },
   {
     "id": "9W8452RC/8E8469/8E0468-DHM",
-    "nombre": "U�A DE 330 INCLUIDO SEGUROS - DHM",
+    "nombre": "UÑA DE 330 INCLUIDO SEGUROS - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "9R8452-HD",
-    "nombre": "U�A DE 330 ROJA - HD",
+    "nombre": "UÑA DE 330 ROJA - HD",
     "unidad": "UNIDADES",
     "marca": "HD"
   },
   {
     "id": "9W8552RC-DHM",
-    "nombre": "U�A DE J550 - DHM",
+    "nombre": "UÑA DE J550 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "1358204-CAT",
-    "nombre": "U�A DELANTERA EMPERNABLE + PERNOS + TUERCAS - CAT",
+    "nombre": "UÑA DELANTERA EMPERNABLE + PERNOS + TUERCAS - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "6Y6335-DHM",
-    "nombre": "U�A DELATERA - RETROEXCAVADORA - DHM",
+    "nombre": "UÑA DELATERA - RETROEXCAVADORA - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "1358203-CAT",
-    "nombre": "U�A EMPERNABLE + PERNOS + TUERCAS - CAT",
+    "nombre": "UÑA EMPERNABLE + PERNOS + TUERCAS - CAT",
     "unidad": "UNIDADES",
     "marca": "CAT"
   },
   {
     "id": "6Y5230-DHM",
-    "nombre": "U�A ESCARIFICADOR - DHM",
+    "nombre": "UÑA ESCARIFICADOR - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "6Y5230-ITR",
-    "nombre": "U�A ESCARIFICADOR - ITR",
+    "nombre": "UÑA ESCARIFICADOR - ITR",
     "unidad": "UNIDADES",
     "marca": "ITR"
   },
   {
     "id": "7T3402RC-HD",
-    "nombre": "U�A FORGING J400 + SEGURO (7T3402 + 8E8409) - HD",
+    "nombre": "UÑA FORGING J400 + SEGURO (7T3402 + 8E8409) - HD",
     "unidad": "UNIDADES",
     "marca": "HD"
   },
   {
     "id": "6Y3222-DHM",
-    "nombre": "U�A J225 NORMAL - DHM",
+    "nombre": "UÑA J225 NORMAL - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "6Y3222RC-DHM",
-    "nombre": "U�A J225 ROCKERA - DHM",
+    "nombre": "UÑA J225 ROCKERA - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "7T3402PT-HD",
-    "nombre": "U�A J400 CON TALONERA + SEGUROS(7T3408+8E8409) - HD",
+    "nombre": "UÑA J400 CON TALONERA + SEGUROS(7T3408+8E8409) - HD",
     "unidad": "UNIDADES",
     "marca": "HD"
   },
   {
     "id": "9W8452RC-HD",
-    "nombre": "U�A J450 + SEGUROS(8E0468+8E8469) - HD",
+    "nombre": "UÑA J450 + SEGUROS(8E0468+8E8469) - HD",
     "unidad": "UNIDADES",
     "marca": "HD"
   },
   {
     "id": "2209103-DHM",
-    "nombre": "U�A K100 - DHM",
+    "nombre": "UÑA K100 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "2209113-DHM",
-    "nombre": "U�A K110 - DHM",
+    "nombre": "UÑA K110 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "2862114-DHM",
-    "nombre": "U�A K110 - DHM",
+    "nombre": "UÑA K110 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "2209081-DHM",
-    "nombre": "U�A K80 - DHM",
+    "nombre": "UÑA K80 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "2209003-DHM",
-    "nombre": "U�A K90 - DHM",
+    "nombre": "UÑA K90 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "2209092-DHM",
-    "nombre": "U�A K90 - DHM",
+    "nombre": "UÑA K90 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "2209093-DHM",
-    "nombre": "U�A K90 - DHM",
+    "nombre": "UÑA K90 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "6Y0309-DHM",
-    "nombre": "U�A PARA MOTONOVELADORA - DHM",
+    "nombre": "UÑA PARA MOTONOVELADORA - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "6Y0309-ITR",
-    "nombre": "U�A PARA MOTONOVELADORA - ITR",
+    "nombre": "UÑA PARA MOTONOVELADORA - ITR",
     "unidad": "UNIDADES",
     "marca": "ITR"
   },
   {
     "id": "1U3222RC-DHM",
-    "nombre": "U�A PARA RETROEXCAVADORA - DHM",
+    "nombre": "UÑA PARA RETROEXCAVADORA - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "9R8552RC-DHM",
-    "nombre": "U�A ROJA REFORZADA J550 - DHM",
+    "nombre": "UÑA ROJA REFORZADA J550 - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
   {
     "id": "9R8552RC",
-    "nombre": "U�A ROJA REFORZADA J550 - DHM",
+    "nombre": "UÑA ROJA REFORZADA J550 - DHM",
     "unidad": "UNIDADES",
-    "marca": "#�VALOR!"
+    "marca": "DHM"
   },
   {
     "id": "2085235-ALT",
-    "nombre": "U�A ROMBO-RETROEXCAVADORA - ALT",
+    "nombre": "UÑA ROMBO-RETROEXCAVADORA - ALT",
     "unidad": "UNIDADES",
     "marca": "ALT"
   },
   {
     "id": "1U3252PT-DHM",
-    "nombre": "U�A TALONERA - DHM",
+    "nombre": "UÑA TALONERA - DHM",
     "unidad": "UNIDADES",
     "marca": "DHM"
   },
@@ -27706,25 +27706,25 @@ export const productos =
     "id": "326 NEX GEN KCK00462",
     "nombre": "USED CAT 326 HYDRAULIC EXCAVATOR YOM:2020 ENGINE SN. E7A36567 WORKING HOURS:6700H PIN NO. CAT00326KKCK00462 - CAT",
     "unidad": "UNIDADES",
-    "marca": "#�VALOR!"
+    "marca": "CAT"
   },
   {
     "id": "330 NEX GEN KEL11054",
     "nombre": "USED CAT 330 HYDRAULIC EXCAVATOR YOM:2020 ENGINE SN.E7A37618 WORKING HOURS:6411H PIN NO. CAT00330CKEL11054 - CAT",
     "unidad": "UNIDADES",
-    "marca": "#�VALOR!"
+    "marca": "CAT"
   },
   {
     "id": "330 NEX GEN KEL21154",
     "nombre": "USED CATERPILLAR 330 HYDRAULIC EXCAVATOR YOM:2021 S/N:CAT00330CKEL21154 ENGINE:C7.1(E7A49934) WORKING HOURS:2276H - CAT",
     "unidad": "UNIDADES",
-    "marca": "#�VALOR!"
+    "marca": "CAT"
   },
   {
     "id": "336 NEX GEN GDY10781",
     "nombre": "USED CATERPILLAR 336 HYDRAULIC EXCAVATOR YOM:2020 S/N:CAT00336PGDY10781 ENGINE:C9.3(NTB03702) WORKING HOURS:5361H - CAT",
     "unidad": "UNIDADES",
-    "marca": "#�VALOR!"
+    "marca": "CAT"
   },
   {
     "id": "4P8088-CAT",

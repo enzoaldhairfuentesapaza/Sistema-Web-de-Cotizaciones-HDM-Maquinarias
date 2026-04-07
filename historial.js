@@ -148,8 +148,8 @@ async function borrarCotizacion(id) {
 // =======================
 // PDF
 // =======================
-async function descargarPDF(id) {
-
+async function descargarPDF(id) 
+{
   const { data: cotizacion, error } = await supabase
     .from("cotizaciones")
     .select("*")
@@ -177,8 +177,10 @@ async function descargarPDF(id) {
   doc.text(cotizacion.direccion || "-", 48, 74);
   doc.text(new Date(cotizacion.fecha).toLocaleDateString(), 48, 80);
 
-  doc.setFontSize(20);
-  doc.text(String(cotizacion.id), 161, 44);
+  doc.setFontSize(24);
+  doc.text(String(cotizacion.id).padStart(7, "0"), 161, 45);
+
+  doc.setFontSize(7);
 
   let y = 107;
   let total = 0;
@@ -186,9 +188,12 @@ async function descargarPDF(id) {
 
   (cotizacion.productos || []).forEach(p => {
 
+    // 🔥 cálculo igual al index
     let precio = p.price;
 
-    if (p.currency === "USD") precio *= (cotizacion.tipo_cambio || 3.75);
+    if (p.currency === "USD") {
+      precio *= (cotizacion.tipo_cambio || 1);
+    }
 
     (p.brandAdjustments || []).forEach(a => precio *= (1 + a / 100));
     (p.discounts || []).forEach(d => precio *= (1 - d / 100));
@@ -197,24 +202,44 @@ async function descargarPDF(id) {
     const subtotal = precioFinal * p.qty;
     total += subtotal;
 
+    const descTexto =
+      p.showDiscounts && p.discounts?.length
+        ? `${p.desc} (Desc: ${p.discounts.join("%, ")}%)`
+        : p.desc;
+
+    // 🔥 multilínea (igual que index)
+    const codigoLines = doc.splitTextToSize(p.code, 20);
+    const descLines = doc.splitTextToSize(descTexto, 58);
+
+    const lineHeight = 5;
+    const maxLines = Math.max(codigoLines.length, descLines.length);
+    const blockHeight = maxLines * lineHeight;
+
+    // 🔹 todo alineado arriba (como decidiste)
+    doc.setFontSize(10);
     doc.text(String(index), 9, y);
-    doc.text(p.code, 18, y);
-    doc.text(p.unit, 44, y);
+
+    doc.setFontSize(7);
+
+    doc.text(codigoLines, 18, y);
+    doc.text(p.unit, 41, y);
     doc.text(p.qty.toString(), 66, y);
     doc.text(p.brand, 85, y);
-    doc.text(p.desc, 103, y);
+
+    doc.text(descLines, 103, y - 1);
+
     doc.text(precioFinal.toFixed(2), 180, y, { align: "right" });
     doc.text(subtotal.toFixed(2), 202, y, { align: "right" });
 
-    y += 7;
+    y += blockHeight;
     index++;
   });
 
+  doc.setFontSize(10);
   doc.text(total.toFixed(2), 202, 275, { align: "right" });
 
   doc.save(`Cotizacion_${cotizacion.id}.pdf`);
 }
-
 // =======================
 // NAVEGACIÓN
 // =======================

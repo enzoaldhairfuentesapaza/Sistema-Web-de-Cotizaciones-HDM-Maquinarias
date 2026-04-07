@@ -514,7 +514,8 @@ function editProduct(index)
 ======================= */
 
 
-async function buildPDF(numeroCotizacion) {
+async function buildPDF(numeroCotizacion, data = null)
+{
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF("p", "mm", "a4");
 
@@ -533,11 +534,11 @@ async function buildPDF(numeroCotizacion) {
 
   const numeroFormateado =
     String(numeroCotizacion).padStart(7, "0");
-  doc.setFontSize(24);
 
+  doc.setFontSize(24);
   doc.text(numeroFormateado, 161, 45);
 
-  doc.setFontSize(9);
+  doc.setFontSize(7);
 
   let y = 107;
   let total = 0;
@@ -553,17 +554,34 @@ async function buildPDF(numeroCotizacion) {
         ? `${p.desc} (Desc: ${p.discounts.join("%, ")}%)`
         : p.desc;
 
+    const codigoLines = doc.splitTextToSize(p.code, 20);
+    const descLines = doc.splitTextToSize(descTexto, 58);
 
+    const lineHeight = 5;
+    const maxLines = Math.max(codigoLines.length, descLines.length);
+    const blockHeight = maxLines * lineHeight;
+
+    // 🔹 TODO parte desde la misma línea base (y)
+
+    doc.setFontSize(10);
     doc.text(String(index), 9, y);
-    doc.text(p.code, 18, y);
-    doc.text(p.unit, 44, y);
+
+    doc.setFontSize(7);
+
+    doc.text(codigoLines, 18, y);
+    doc.text(p.unit, 41, y);
     doc.text(p.qty.toString(), 66, y);
     doc.text(p.brand, 85, y);
-    doc.text(descTexto, 103, y - 1, { maxWidth: 58 });
+
+    doc.text(descLines, 103, y - 1);
+
+    // precios alineados con la primera línea
     doc.text(precioFinal.toFixed(2), 180, y, { align: "right" });
     doc.text(subtotal.toFixed(2), 202, y, { align: "right" });
 
-    y += 7;
+    // 🔥 crecimiento SOLO hacia abajo
+    y += blockHeight;
+
     index++;
   });
 
@@ -572,6 +590,7 @@ async function buildPDF(numeroCotizacion) {
 
   return doc;
 }
+
 async function obtenerSiguienteNumero() {
 
   const { data, error } = await supabase
@@ -664,15 +683,14 @@ function cargarCotizacion(coti) {
 }
 
 
-
 async function updatePDFPreview(id = numeroCotizacionActual) {
   const doc = await buildPDF(id);
   pdfPreview.src = URL.createObjectURL(doc.output("blob"));
 }
 
-async function downloadPDF() {
-  const doc = await buildPDF("PREVIEW");
-  doc.save(`cotizacion_preview.pdf`);
+async function downloadPDF(id = numeroCotizacionActual) {
+  const doc = await buildPDF(id);
+  doc.save(`Cotizacion_${id}.pdf`);
 }
 
 function getFechaEmision() {
